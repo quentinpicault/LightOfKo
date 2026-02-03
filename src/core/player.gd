@@ -1,5 +1,9 @@
 class_name Player extends CharacterBody2D
 
+signal position_changed(position: Transform2D)
+signal facing_changed(facing: Utilities.Facing)
+signal state_changed(state: Utilities.State)
+
 @onready var state_machine = $PlayerStateMachine
 
 @export var GRAVITY = 2000.0
@@ -8,10 +12,13 @@ class_name Player extends CharacterBody2D
 @export var JUMP_VELOCITY = -800.0
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_left"):
+	position_changed.emit(global_transform)
+	if Input.is_action_pressed("ui_left"):
 		state_machine.change_facing(Utilities.Facing.LEFT)
-	if Input.is_action_just_pressed("ui_right"):
+		facing_changed.emit(Utilities.Facing.LEFT)
+	if Input.is_action_pressed("ui_right"):
 		state_machine.change_facing(Utilities.Facing.RIGHT)
+		facing_changed.emit(Utilities.Facing.RIGHT)
 	if Input.is_action_just_pressed("ui_up"):
 		state_machine.toggle_mask()
 
@@ -23,16 +30,20 @@ func _physics_process(delta: float) -> void:
 		
 		if velocity.y > 0:
 			state_machine.change_state(Utilities.State.FALL)
+			state_changed.emit(Utilities.State.FALL)
 	
 	else :
 		if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
 			state_machine.change_state(Utilities.State.RUN)
+			state_changed.emit(Utilities.State.RUN)
 		else:
 			state_machine.change_state(Utilities.State.IDLE)
+			state_changed.emit(Utilities.State.IDLE)
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		state_machine.change_state(Utilities.State.JUMP)
+		state_changed.emit(Utilities.State.JUMP)
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.

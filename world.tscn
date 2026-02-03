@@ -1,11 +1,13 @@
-[gd_scene format=4 uid="uid://ifida72dwhmt"]
+[gd_scene format=4 uid="uid://8xfhqvm5t0w2"]
 
-[ext_resource type="PackedScene" uid="uid://b4q2sba2gk6fq" path="res://player.tscn" id="1_f3sb7"]
-[ext_resource type="Texture2D" uid="uid://btt15hdm35hvy" path="res://assets/sprites/tileset.png" id="1_fj7yv"]
-[ext_resource type="Texture2D" uid="uid://cfh7xidmy85ln" path="res://assets/sprites/background.png" id="1_tlwt5"]
+[ext_resource type="Texture2D" uid="uid://btt15hdm35hvy" path="res://assets/sprites/tileset.png" id="1_036b0"]
+[ext_resource type="PackedScene" uid="uid://b4q2sba2gk6fq" path="res://player.tscn" id="2_dwbse"]
+[ext_resource type="PackedScene" uid="uid://k31jg7t1axo4" path="res://shadow.tscn" id="3_036b0"]
+[ext_resource type="Shader" uid="uid://bq65gm00b26n0" path="res://assets/shaders/blend.gdshader" id="3_mu6c3"]
+[ext_resource type="Texture2D" uid="uid://dlwbwv6qdmk1i" path="res://assets/sprites/mask.png" id="4_46256"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tlwt5"]
-texture = ExtResource("1_fj7yv")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pkg7o"]
+texture = ExtResource("1_036b0")
 texture_region_size = Vector2i(77, 77)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-38.5, -38.5, 38.5, -38.5, 38.5, 38.5, -38.5, 38.5)
@@ -23,20 +25,54 @@ texture_region_size = Vector2i(77, 77)
 2:0/size_in_atlas = Vector2i(2, 1)
 2:0/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_aqk2v"]
+[sub_resource type="TileSet" id="TileSet_gbfbk"]
 tile_size = Vector2i(77, 77)
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_tlwt5")
+sources/0 = SubResource("TileSetAtlasSource_pkg7o")
 
-[node name="World" type="Node2D" unique_id=2104619353]
+[sub_resource type="ViewportTexture" id="ViewportTexture_vbegm"]
+viewport_path = NodePath("SubViewport1")
 
-[node name="Background" type="Sprite2D" parent="." unique_id=1117285208]
-position = Vector2(1920, 1080)
-texture = ExtResource("1_tlwt5")
+[sub_resource type="ViewportTexture" id="ViewportTexture_ehkex"]
+viewport_path = NodePath("SubViewport2")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=704893499]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vbegm"]
+resource_local_to_scene = true
+shader = ExtResource("3_mu6c3")
+shader_parameter/world_1_viewport = SubResource("ViewportTexture_vbegm")
+shader_parameter/world_2_viewport = SubResource("ViewportTexture_ehkex")
+shader_parameter/mask_texture = ExtResource("4_46256")
+
+[node name="World" type="Node2D" unique_id=1347823068]
+
+[node name="SubViewport1" type="SubViewport" parent="." unique_id=133025337]
+size = Vector2i(3840, 2160)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="SubViewport1" unique_id=1979910845]
 tile_map_data = PackedByteArray("AAAAABsAAAAAAAAAAAABABsAAAAAAAEAAAACABsAAAAAAAEAAAADABsAAAAAAAEAAAAEABsAAAAAAAEAAAAFABsAAAAAAAEAAAAGABsAAAAAAAEAAAAHABsAAAAAAAEAAAAIABsAAAAAAAEAAAAJABsAAAAAAAEAAAAKABsAAAAAAAEAAAALABsAAAAAAAEAAAAMABsAAAAAAAEAAAANABsAAAAAAAEAAAAOABsAAAAAAAEAAAAPABsAAAAAAAEAAAAQABsAAAAAAAEAAAARABsAAAAAAAEAAAASABsAAAAAAAEAAAATABsAAAAAAAEAAAAUABsAAAAAAAEAAAAVABsAAAAAAAEAAAAWABsAAAAAAAEAAAAXABsAAAAAAAEAAAAYABsAAAAAAAEAAAAZABsAAAAAAAEAAAAaABsAAAAAAAEAAAAbABsAAAAAAAEAAAAcABsAAAAAAAEAAAAdABsAAAAAAAEAAAAeABsAAAAAAAEAAAAfABsAAAAAAAEAAAAgABsAAAAAAAEAAAAhABsAAAAAAAEAAAAiABsAAAAAAAEAAAAjABsAAAAAAAEAAAAkABsAAAAAAAEAAAAlABsAAAAAAAEAAAAmABsAAAAAAAEAAAAnABsAAAAAAAEAAAAoABsAAAAAAAEAAAApABsAAAAAAAEAAAAqABsAAAAAAAEAAAArABsAAAAAAAEAAAAsABsAAAAAAAEAAAAtABsAAAAAAAEAAAAuABsAAAAAAAEAAAAvABsAAAAAAAEAAAAwABsAAAAAAAEAAAAxABsAAAAAAAAAAGAAAAAAAAAAAAAAAFABAAAAAAAAAAEAADACAAAAAAAAAAEAADADAAAAAAAAAAEAADAEAAAAAAAAAAEAADAFAAAAAAAAAAEAADAGAAAAAAAAAAEAADAHAAAAAAAAAAEAADAIAAAAAAAAAAEAADAJAAAAAAAAAAEAADAKAAAAAAAAAAEAADALAAAAAAAAAAEAADAMAAAAAAAAAAEAADANAAAAAAAAAAEAADAOAAAAAAAAAAEAADAPAAAAAAAAAAEAADAQAAAAAAAAAAEAADARAAAAAAAAAAEAADASAAAAAAAAAAEAADATAAAAAAAAAAEAADAUAAAAAAAAAAEAADAVAAAAAAAAAAEAADAWAAAAAAAAAAEAADAXAAAAAAAAAAEAADAYAAAAAAAAAAEAADAZAAAAAAAAAAEAADAaAAAAAAAAAAEAADAbAAAAAAAAAAEAADAcAAAAAAAAAAEAADAdAAAAAAAAAAEAADAeAAAAAAAAAAEAADAfAAAAAAAAAAEAADAgAAAAAAAAAAEAADAhAAAAAAAAAAEAADAiAAAAAAAAAAEAADAjAAAAAAAAAAEAADAkAAAAAAAAAAEAADAlAAAAAAAAAAEAADAmAAAAAAAAAAEAADAnAAAAAAAAAAEAADAoAAAAAAAAAAEAADApAAAAAAAAAAEAADAqAAAAAAAAAAEAADArAAAAAAAAAAEAADAsAAAAAAAAAAEAADAtAAAAAAAAAAEAADAuAAAAAAAAAAEAADAvAAAAAAAAAAEAADAwAAAAAAAAAAEAADAxAAAAAAAAAAAAADAxAAEAAAAAAAEAAGAxAAIAAAAAAAEAAGAxAAMAAAAAAAEAAGAxAAQAAAAAAAEAAGAxAAUAAAAAAAEAAGAxAAYAAAAAAAEAAGAxAAcAAAAAAAEAAGAxAAgAAAAAAAEAAGAxAAkAAAAAAAEAAGAxAAoAAAAAAAEAAGAxAAsAAAAAAAEAAGAxAAwAAAAAAAEAAGAxAA0AAAAAAAEAAGAxAA4AAAAAAAEAAGAxAA8AAAAAAAEAAGAxABAAAAAAAAEAAGAxABEAAAAAAAEAAGAxABIAAAAAAAEAAGAxABMAAAAAAAEAAGAxABQAAAAAAAEAAGAxABUAAAAAAAEAAGAxABYAAAAAAAEAAGAxABcAAAAAAAEAAGAxABgAAAAAAAEAAGAxABkAAAAAAAEAAGAxABoAAAAAAAEAAGAAABoAAAAAAAEAAFAAABkAAAAAAAEAAFAAABgAAAAAAAEAAFAAABcAAAAAAAEAAFAAABYAAAAAAAEAAFAAABUAAAAAAAEAAFAAABQAAAAAAAEAAFAAABMAAAAAAAEAAFAAABIAAAAAAAEAAFAAABEAAAAAAAEAAFAAABAAAAAAAAEAAFAAAA8AAAAAAAEAAFAAAA4AAAAAAAEAAFAAAA0AAAAAAAEAAFAAAAwAAAAAAAEAAFAAAAsAAAAAAAEAAFAAAAoAAAAAAAEAAFAAAAkAAAAAAAEAAFAAAAgAAAAAAAEAAFAAAAcAAAAAAAEAAFAAAAYAAAAAAAEAAFAAAAUAAAAAAAEAAFAAAAQAAAAAAAEAAFAAAAMAAAAAAAEAAFAAAAIAAAAAAAEAAFAAAAEAAAAAAAEAAFAVABkAAAABAAAAAAAMABkAAAABAAAAAAAaABkAAAABAAAAAAAHABoAAAAAAAEAAAAeABoAAAAAAAEAAAAfABkAAAAAAAEAAAAhABkAAAAAAAEAAAAgABkAAAAAAAEAAAAiABoAAAAAAAEAAAAjABgAAAAAAAEAAAAgABcAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_aqk2v")
+tile_set = SubResource("TileSet_gbfbk")
 
-[node name="Player" parent="." unique_id=1354902569 instance=ExtResource("1_f3sb7")]
+[node name="Player" parent="SubViewport1" unique_id=1354902569 instance=ExtResource("2_dwbse")]
 position = Vector2(583, 330)
+
+[node name="SubViewport2" type="SubViewport" parent="." unique_id=1094088201]
+size = Vector2i(3840, 2160)
+
+[node name="ColorRect" type="ColorRect" parent="SubViewport2" unique_id=882056381]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Shadow" parent="SubViewport2" unique_id=1946572110 instance=ExtResource("3_036b0")]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=250531608]
+material = SubResource("ShaderMaterial_vbegm")
+offset_right = 3840.0
+offset_bottom = 2160.0
+
+[connection signal="facing_changed" from="SubViewport1/Player" to="SubViewport2/Shadow" method="_on_player_facing_changed"]
+[connection signal="position_changed" from="SubViewport1/Player" to="SubViewport2/Shadow" method="_on_player_position_changed"]
+[connection signal="state_changed" from="SubViewport1/Player" to="SubViewport2/Shadow" method="_on_player_state_changed"]

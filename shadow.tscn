@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://k31jg7t1axo4"]
+
+[ext_resource type="Texture2D" uid="uid://5jlnixkhatbu" path="res://assets/sprites/ko.png" id="1_6pqxc"]
+[ext_resource type="Script" uid="uid://4hmqk8xyx7aa" path="res://src/core/shadow.gd" id="1_n2o5g"]
+[ext_resource type="Script" uid="uid://c55wi67o4nfsi" path="res://src/core/shadow_state_machine.gd" id="3_icb2k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2o5g"]
+atlas = ExtResource("1_6pqxc")
+region = Rect2(546, 282, 91, 141)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icb2k"]
+atlas = ExtResource("1_6pqxc")
+region = Rect2(0, 282, 91, 141)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ov1mx"]
+atlas = ExtResource("1_6pqxc")
+region = Rect2(91, 282, 91, 141)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eeawa"]
+atlas = ExtResource("1_6pqxc")
+region = Rect2(455, 282, 91, 141)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivn5u"]
+atlas = ExtResource("1_6pqxc")
+region = Rect2(182, 282, 91, 141)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jn06o"]
+atlas = ExtResource("1_6pqxc")
+region = Rect2(273, 282, 91, 141)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwtf4"]
+atlas = ExtResource("1_6pqxc")
+region = Rect2(0, 282, 91, 141)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xlb2y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2o5g")
+}],
+"loop": false,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_icb2k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ov1mx")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eeawa")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivn5u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jn06o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwtf4")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[node name="Shadow" type="Node2D" unique_id=1946572110]
+script = ExtResource("1_n2o5g")
+
+[node name="ShadowKo" type="AnimatedSprite2D" parent="." unique_id=962702065]
+self_modulate = Color(1, 1, 1, 0.4509804)
+position = Vector2(3.6562476, -29.467377)
+scale = Vector2(0.9375, 0.9375)
+sprite_frames = SubResource("SpriteFrames_xlb2y")
+animation = &"idle"
+
+[node name="ShadowStateMachine" type="Node2D" parent="." unique_id=1713940962]
+script = ExtResource("3_icb2k")
