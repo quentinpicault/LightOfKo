@@ -5,27 +5,26 @@ signal facing_changed(facing: Utilities.Facing)
 signal state_changed(state: Utilities.State)
 
 @onready var state_machine = $PlayerStateMachine
+@onready var gravity = 0.0
 
-@export var GRAVITY = 2000.0
+@export var MOVE_ENABLED = false
 @export var TERMINAL_VELOCITY = 600.0
 @export var SPEED = 600.0
 @export var JUMP_VELOCITY = -800.0
 
 func _process(delta: float) -> void:
 	position_changed.emit(global_transform)
-	if Input.is_action_pressed("ui_left"):
+	if MOVE_ENABLED and Input.is_action_pressed("move_left"):
 		state_machine.change_facing(Utilities.Facing.LEFT)
 		facing_changed.emit(Utilities.Facing.LEFT)
-	if Input.is_action_pressed("ui_right"):
+	if MOVE_ENABLED and Input.is_action_pressed("move_right"):
 		state_machine.change_facing(Utilities.Facing.RIGHT)
 		facing_changed.emit(Utilities.Facing.RIGHT)
-	if Input.is_action_just_pressed("ui_up"):
-		state_machine.toggle_mask()
 
 func _physics_process(delta: float) -> void:
-	# Add the GRAVITY.
+	var direction := Input.get_axis("move_left", "move_right")
 	if not is_on_floor():
-		velocity += Vector2(0, GRAVITY) * delta
+		velocity += Vector2(0, gravity) * delta
 		velocity.y = min(velocity.y, TERMINAL_VELOCITY)
 		
 		if velocity.y > 0:
@@ -33,25 +32,32 @@ func _physics_process(delta: float) -> void:
 			state_changed.emit(Utilities.State.FALL)
 	
 	else :
-		if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
+		if MOVE_ENABLED and direction:
 			state_machine.change_state(Utilities.State.RUN)
 			state_changed.emit(Utilities.State.RUN)
 		else:
 			state_machine.change_state(Utilities.State.IDLE)
 			state_changed.emit(Utilities.State.IDLE)
 
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		state_machine.change_state(Utilities.State.JUMP)
 		state_changed.emit(Utilities.State.JUMP)
 		velocity.y = JUMP_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction:
+	if MOVE_ENABLED and direction:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+func _on_world_gravity_changed(world_gravity: float) -> void:
+	gravity = world_gravity
+
+
+func _on_world_mask_active(flag: bool) -> void:
+	state_machine.current_mask = flag
+
+
+func _on_world_move_enabled(flag: bool) -> void:
+	MOVE_ENABLED = flag

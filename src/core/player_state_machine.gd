@@ -42,11 +42,11 @@ func _process(delta: float) -> void:
 			regular_sprite.flip_h = false
 			mask_sprite.flip_h = false
 
-func toggle_mask():
-	current_mask = !current_mask
-
 func change_state(new_state: Utilities.State):
 	current_state = new_state
 
 func change_facing(new_facing: Utilities.Facing):
 	current_facing = new_facing
+	
+func change_mask(mask_active: bool):
+	current_mask = mask_active
