@@ -8,6 +8,10 @@
 atlas = ExtResource("1_6pqxc")
 region = Rect2(546, 282, 91, 141)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8htsk"]
+atlas = ExtResource("1_6pqxc")
+region = Rect2(364, 282, 91, 141)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_icb2k"]
 atlas = ExtResource("1_6pqxc")
 region = Rect2(0, 282, 91, 141)
@@ -40,6 +44,14 @@ animations = [{
 }],
 "loop": false,
 "name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8htsk")
+}],
+"loop": false,
+"name": &"fear",
 "speed": 5.0
 }, {
 "frames": [{
@@ -84,7 +96,7 @@ self_modulate = Color(1, 1, 1, 0.4509804)
 position = Vector2(3.6562476, -29.467377)
 scale = Vector2(0.9375, 0.9375)
 sprite_frames = SubResource("SpriteFrames_xlb2y")
-animation = &"idle"
+animation = &"fear"
 
 [node name="ShadowStateMachine" type="Node2D" parent="." unique_id=1713940962]
 script = ExtResource("3_icb2k")

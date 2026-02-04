@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c2nrpyqkpaonv"]
+
+[ext_resource type="Script" uid="uid://lvikvtvb50n3" path="res://src/core/pearl_animation.gd" id="1_hsiex"]
+[ext_resource type="Texture2D" uid="uid://buepvidit6w8k" path="res://assets/sprites/pearl.png" id="2_hsiex"]
+
+[node name="PearlAnimation" type="Node2D" unique_id=838058815]
+script = ExtResource("1_hsiex")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=622758750]
+position = Vector2(38.5, 38.5)
+texture = ExtResource("2_hsiex")

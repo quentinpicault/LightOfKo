@@ -1,11 +1,11 @@
 class_name PlayerStateMachine extends Node2D
 
+@onready var regular_sprite = $"../RegularKo"
+@onready var mask_sprite = $"../MaskKo"
+
 @export var current_facing := Utilities.Facing.RIGHT
 @export var current_state := Utilities.State.IDLE
 @export var current_mask := false
-
-@onready var regular_sprite = $"../RegularKo"
-@onready var mask_sprite = $"../MaskKo"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,6 +20,10 @@ func _process(delta: float) -> void:
 		Utilities.State.IDLE:
 			regular_sprite.play("idle")
 			mask_sprite.play("idle")
+			
+		Utilities.State.FEAR:
+			regular_sprite.play("fear")
+			mask_sprite.play("fear")
 			
 		Utilities.State.RUN:
 			regular_sprite.play("run")

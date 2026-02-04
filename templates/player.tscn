@@ -11,6 +11,10 @@ size = Vector2(74, 74)
 atlas = ExtResource("1_4flbx")
 region = Rect2(546, 0, 91, 141)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_quwk8"]
+atlas = ExtResource("1_4flbx")
+region = Rect2(364, 0, 91, 141)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_hqtel"]
 atlas = ExtResource("1_4flbx")
 region = Rect2(0, 0, 91, 141)
@@ -43,6 +47,14 @@ animations = [{
 }],
 "loop": false,
 "name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_quwk8")
+}],
+"loop": false,
+"name": &"fear",
 "speed": 5.0
 }, {
 "frames": [{
@@ -83,6 +95,10 @@ animations = [{
 atlas = ExtResource("1_4flbx")
 region = Rect2(546, 141, 91, 141)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_sik13"]
+atlas = ExtResource("1_4flbx")
+region = Rect2(364, 141, 91, 141)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_nvl01"]
 atlas = ExtResource("1_4flbx")
 region = Rect2(0, 141, 91, 141)
@@ -115,6 +131,14 @@ animations = [{
 }],
 "loop": false,
 "name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sik13")
+}],
+"loop": false,
+"name": &"fear",
 "speed": 5.0
 }, {
 "frames": [{
@@ -152,6 +176,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" unique_id=1354902569]
+collision_mask = 6
 script = ExtResource("1_onrkg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=591021123]
@@ -161,13 +186,13 @@ shape = SubResource("RectangleShape2D_onrkg")
 position = Vector2(3.6562476, -29.467377)
 scale = Vector2(0.9375, 0.9375)
 sprite_frames = SubResource("SpriteFrames_nvl01")
-animation = &"idle"
+animation = &"fear"
 
 [node name="MaskKo" type="AnimatedSprite2D" parent="." unique_id=1558391329]
 position = Vector2(3.6562476, -29.467377)
 scale = Vector2(0.9375, 0.9375)
 sprite_frames = SubResource("SpriteFrames_5tmop")
-animation = &"idle"
+animation = &"fear"
 
 [node name="PlayerStateMachine" type="Node2D" parent="." unique_id=2125311346]
 script = ExtResource("3_i3pqv")

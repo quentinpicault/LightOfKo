@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://slval1swbd1e"]
+
+[ext_resource type="Script" uid="uid://b2588cyy5uwee" path="res://src/common/audio_manager.gd" id="1_jisk1"]
+[ext_resource type="PackedScene" uid="uid://joqkcgk7mnr4" path="res://src/common/sfx.tscn" id="2_d0ikh"]
+[ext_resource type="AudioStream" uid="uid://b0qc2mlrs0rqy" path="res://assets/music/stage_without_mask.mp3" id="2_jp375"]
+[ext_resource type="AudioStream" uid="uid://b0ebbrxfiqpyk" path="res://assets/sfx/pearl.wav" id="3_7jmnn"]
+[ext_resource type="AudioStream" uid="uid://daqgbxinhjd38" path="res://assets/sfx/jump1.wav" id="3_kdspj"]
+[ext_resource type="AudioStream" uid="uid://ct264magcjf30" path="res://assets/sfx/mask_on.wav" id="3_t7v5i"]
+[ext_resource type="AudioStream" uid="uid://bkgubkelj8w5i" path="res://assets/sfx/jump2.wav" id="4_226ow"]
+[ext_resource type="AudioStream" uid="uid://doyafqj610sm8" path="res://assets/sfx/mask_off.wav" id="4_abra4"]
+[ext_resource type="AudioStream" uid="uid://b7f8g4ajprgmi" path="res://assets/sfx/fear.wav" id="4_su454"]
+[ext_resource type="AudioStream" uid="uid://np41jnvc0h1l" path="res://assets/sfx/jump3.wav" id="5_7jmnn"]
+[ext_resource type="AudioStream" uid="uid://bx010c7okjy80" path="res://assets/music/stage_with_mask.mp3" id="11_abra4"]
+
+[node name="AudioManager" type="Node" unique_id=2112950315]
+process_mode = 3
+script = ExtResource("1_jisk1")
+sfx_scene = ExtResource("2_d0ikh")
+mask_on = ExtResource("3_t7v5i")
+mask_off = ExtResource("4_abra4")
+pearl_sfx = ExtResource("3_7jmnn")
+fear_sfx = ExtResource("4_su454")
+jump1_sfx = ExtResource("3_kdspj")
+jump2_sfx = ExtResource("4_226ow")
+jump3_sfx = ExtResource("5_7jmnn")
+
+[node name="NoMaskMusic" type="AudioStreamPlayer" parent="." unique_id=1028247618]
+stream = ExtResource("2_jp375")
+parameters/looping = true
+
+[node name="MaskMusic" type="AudioStreamPlayer" parent="." unique_id=1513482162]
+stream = ExtResource("11_abra4")
+parameters/looping = true
+
+[node name="PlayingSounds" type="Node" parent="." unique_id=598008608]

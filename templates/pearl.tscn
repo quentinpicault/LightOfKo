@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://kl7sp0l1g8ji"]
+
+[ext_resource type="Script" uid="uid://byalkne7dhqt0" path="res://src/core/pearl.gd" id="1_e2uul"]
+[ext_resource type="Texture2D" uid="uid://buepvidit6w8k" path="res://assets/sprites/pearl.png" id="2_bit6h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3rx2f"]
+size = Vector2(42, 66)
+
+[node name="Pearl" type="Area2D" unique_id=1745288239]
+collision_layer = 4
+script = ExtResource("1_e2uul")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1859070144]
+texture = ExtResource("2_bit6h")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=824822990]
+position = Vector2(39, 47)
+shape = SubResource("RectangleShape2D_3rx2f")

@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://8xfhqvm5t0w2"]
+
+[ext_resource type="Script" uid="uid://c4fpswxmvwcpm" path="res://src/core/world.gd" id="1_i7141"]
+[ext_resource type="Texture2D" uid="uid://cfh7xidmy85ln" path="res://assets/sprites/background.png" id="2_4mrxx"]
+[ext_resource type="PackedScene" uid="uid://bhmqqhyibsbnt" path="res://templates/level.tscn" id="3_7r4gi"]
+[ext_resource type="PackedScene" uid="uid://b4q2sba2gk6fq" path="res://templates/player.tscn" id="4_w7kh3"]
+[ext_resource type="PackedScene" uid="uid://k31jg7t1axo4" path="res://templates/shadow.tscn" id="5_e3hyu"]
+[ext_resource type="Shader" uid="uid://bq65gm00b26n0" path="res://assets/shaders/blend.gdshader" id="6_q5onr"]
+[ext_resource type="Texture2D" uid="uid://dlwbwv6qdmk1i" path="res://assets/sprites/mask.png" id="7_jhx03"]
+[ext_resource type="PackedScene" uid="uid://bn38e8jhpufhm" path="res://templates/juice.tscn" id="8_4mrxx"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_vbegm"]
+viewport_path = NodePath("LightWorld")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ehkex"]
+viewport_path = NodePath("DarkWorld")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vbegm"]
+resource_local_to_scene = true
+shader = ExtResource("6_q5onr")
+shader_parameter/world_1_viewport = SubResource("ViewportTexture_vbegm")
+shader_parameter/world_2_viewport = SubResource("ViewportTexture_ehkex")
+shader_parameter/mask_texture = ExtResource("7_jhx03")
+shader_parameter/blend_amount = 0.0
+
+[node name="World" type="Node2D" unique_id=1347823068 node_paths=PackedStringArray("mask_shader")]
+script = ExtResource("1_i7141")
+OBSCURITY = true
+MASK_OBTAINED = true
+mask_shader = NodePath("MaskShader")
+
+[node name="LightWorld" type="SubViewport" parent="." unique_id=133025337]
+size = Vector2i(3840, 2160)
+
+[node name="Background" type="Sprite2D" parent="LightWorld" unique_id=1305666728]
+position = Vector2(1920, 1080)
+texture = ExtResource("2_4mrxx")
+
+[node name="Level" parent="LightWorld" unique_id=591077788 instance=ExtResource("3_7r4gi")]
+
+[node name="Player" parent="LightWorld" unique_id=1354902569 instance=ExtResource("4_w7kh3")]
+position = Vector2(722, 658)
+
+[node name="DarkWorld" type="SubViewport" parent="." unique_id=1094088201]
+size = Vector2i(3840, 2160)
+
+[node name="Obscurity" type="ColorRect" parent="DarkWorld" unique_id=882056381]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Shadow" parent="DarkWorld" unique_id=1946572110 instance=ExtResource("5_e3hyu")]
+
+[node name="MaskShader" type="ColorRect" parent="." unique_id=250531608]
+material = SubResource("ShaderMaterial_vbegm")
+offset_right = 3840.0
+offset_bottom = 2160.0
+
+[node name="Juice" parent="." unique_id=1633053643 instance=ExtResource("8_4mrxx")]

@@ -11,8 +11,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func _on_player_position_changed(position: Transform2D) -> void:
-	global_transform = position
+func _on_player_position_changed(player_position: Vector2) -> void:
+	global_position = player_position
 
 func _on_player_facing_changed(facing: int) -> void:
 	state_machine.change_facing(facing)

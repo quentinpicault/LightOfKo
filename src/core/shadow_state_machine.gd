@@ -1,9 +1,9 @@
 class_name ShadowStateMachine extends Node2D
 
+@onready var shadow_sprite = $"../ShadowKo"
+
 @export var current_facing := Utilities.Facing.RIGHT
 @export var current_state := Utilities.State.IDLE
-
-@onready var shadow_sprite = $"../ShadowKo"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,6 +14,9 @@ func _process(delta: float) -> void:
 	match current_state:
 		Utilities.State.IDLE:
 			shadow_sprite.play("idle")
+			
+		Utilities.State.FEAR:
+			shadow_sprite.play("fear")
 			
 		Utilities.State.RUN:
 			shadow_sprite.play("run")

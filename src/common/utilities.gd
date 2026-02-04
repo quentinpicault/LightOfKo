@@ -1,4 +1,4 @@
 extends Node
 
 enum Facing { LEFT, RIGHT }
-enum State { IDLE, RUN, JUMP, FALL }
+enum State { FEAR, IDLE, RUN, JUMP, FALL }
