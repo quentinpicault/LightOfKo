@@ -3,6 +3,7 @@ class_name Player extends CharacterBody2D
 signal position_changed(position: Vector2)
 signal facing_changed(facing: Utilities.Facing)
 signal state_changed(state: Utilities.State)
+signal mask_obtained()
 signal goal()
 signal died()
 
@@ -16,13 +17,14 @@ signal died()
 @export var GRAVITY = 0.0
 @export var TERMINAL_VELOCITY = 600.0
 @export var SPEED = 600.0
-@export var JUMP_VELOCITY = -800.0
+@export var JUMP_VELOCITY = -1080.0
 
 func _ready() -> void:
 	position_changed.connect(shadow._on_player_position_changed)
 	position_changed.connect(iris._on_player_position_changed)
 	facing_changed.connect(shadow._on_player_facing_changed)
 	state_changed.connect(shadow._on_player_state_changed)
+	mask_obtained.connect(game_manager._on_player_mask_obtained)
 	goal.connect(game_manager._on_player_goal)
 	died.connect(game_manager._on_player_died)
 
@@ -85,8 +87,12 @@ func _on_game_manager_move_enabled(flag: bool) -> void:
 func _on_game_manager_mask_active(flag: bool) -> void:
 	state_machine.current_mask = flag
 	
+func _on_mask_hit() -> void:
+	mask_obtained.emit()
+	
 func _on_pearl_pearl_collected(amount: int, position: Vector2) -> void:
 	SCORE += amount
+	print("Score: %d" % SCORE)
 	
 func _on_goal_hit() -> void:
 	goal.emit()

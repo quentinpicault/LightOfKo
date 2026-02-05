@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://c1yi7k0vs40na"]
+
+[ext_resource type="Script" uid="uid://cpvnnyhh52b7h" path="res://src/core/mask.gd" id="1_rv8xw"]
+[ext_resource type="Texture2D" uid="uid://5jlnixkhatbu" path="res://assets/sprites/ko.png" id="2_0d8jk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8c41q"]
+atlas = ExtResource("2_0d8jk")
+region = Rect2(364, 141, 91, 141)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_olg7q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8c41q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t1rx8"]
+size = Vector2(77, 77)
+
+[node name="Mask" type="Area2D" unique_id=1778021176]
+collision_layer = 4
+script = ExtResource("1_rv8xw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=621571818]
+position = Vector2(-13, -74)
+scale = Vector2(1.1538463, 1.0709221)
+sprite_frames = SubResource("SpriteFrames_olg7q")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1758336050]
+position = Vector2(38.5, 38.5)
+shape = SubResource("RectangleShape2D_t1rx8")

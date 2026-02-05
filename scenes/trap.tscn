@@ -1,36 +1,19 @@
 [gd_scene format=3 uid="uid://cdq21c63strmc"]
 
 [ext_resource type="Script" uid="uid://c0anmehy5tmj2" path="res://src/core/trap.gd" id="1_62q8x"]
-[ext_resource type="Texture2D" uid="uid://btt15hdm35hvy" path="res://assets/sprites/tileset.png" id="2_aucmg"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ppgk2"]
-atlas = ExtResource("2_aucmg")
-region = Rect2(154, 0, 154, 77)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_2r41h"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ppgk2")
-}],
-"loop": false,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://tsnkvm6c65xb" path="res://assets/sprites/trap.png" id="2_62q8x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_klq6b"]
-size = Vector2(277, 50)
+size = Vector2(300, 61)
 
 [node name="Trap" type="Area2D" unique_id=1876798311]
 collision_layer = 4
 script = ExtResource("1_62q8x")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=394284156]
-position = Vector2(0, -77)
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_2r41h")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=443990802]
+texture = ExtResource("2_62q8x")
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=833319307]
-position = Vector2(148.5, 52)
+position = Vector2(155, 46.5)
 shape = SubResource("RectangleShape2D_klq6b")

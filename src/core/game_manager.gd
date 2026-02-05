@@ -7,11 +7,13 @@ signal mask_active(flag: bool)
 @onready var player = $"MixedWorlds/LightWorld/Player"
 @onready var level = $"MixedWorlds/LightWorld/Level"
 @onready var checkpoints = $"MixedWorlds/LightWorld/Level/Checkpoints"
+@onready var goals = $"MixedWorlds/LightWorld/Level/Goals"
 @onready var invisible_wall = $"MixedWorlds/LightWorld/Level/InvisibleWall"
+@onready var mask_wall = $"MixedWorlds/LightWorld/Level/MaskWall"
 @onready var iris = $Iris
 
 @export var LEVEL = 0
-@export var GRAVITY = 2000.0
+@export var GRAVITY = 1700.0
 @export var OBSCURITY = false
 @export var MASK_OBTAINED = false
 @export var MASK_ACTIVE = false
@@ -19,7 +21,20 @@ signal mask_active(flag: bool)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if LEVEL > 0:
+		player.position.x -= LEVEL * 3850
+		level.position.x -= LEVEL * 3850
+		invisible_wall.position.x += LEVEL * 3850
+		
+		for i in range(LEVEL):
+			goals.get_child(i).queue_free()
+		
+		if LEVEL > 1:
+			mask_wall.queue_free()
+	
+	check_level_conditions()
 	start_game()
+	
 	AudioManager.play()
 	if MASK_ACTIVE:
 		AudioManager.switch_track(true)
@@ -84,13 +99,18 @@ func fade_to_mask(duration: float = 0.2):
 	tween.tween_property(mix_worlds_shader.material, "shader_parameter/mix_amount", 1.0, duration)\
 		.set_trans(Tween.TRANS_SINE)
 		
+func check_level_conditions() -> void:
+	OBSCURITY = LEVEL > 1
+	MASK_OBTAINED = LEVEL > 1
+
+func _on_player_mask_obtained() -> void:
+	MASK_OBTAINED = true
+	mask_wall.queue_free()
+		
 func _on_player_goal() -> void:
-	var previous_OBSCURITY = OBSCURITY
-	var previous_MASK_OBTAINED = MASK_OBTAINED
-	
+	# Tricky: force FEAR mode during the screen transition is the simplest way to prevent moving
 	if MASK_ACTIVE:
 		toggle_mask()
-	
 	MASK_OBTAINED = false
 	OBSCURITY = true
 	
@@ -105,12 +125,10 @@ func _on_player_goal() -> void:
 		.set_ease(Tween.EASE_IN_OUT)
 	
 	await tween.finished
-	
 	invisible_wall.global_position.x += 3850
-	OBSCURITY = previous_OBSCURITY
-	MASK_OBTAINED = previous_MASK_OBTAINED
 	LEVEL += 1
-		
+	check_level_conditions()
+
 func _on_player_died() -> void:
 	player.motion_mode = 1
 	if MASK_ACTIVE:
