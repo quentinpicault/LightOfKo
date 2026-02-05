@@ -1,17 +1,16 @@
 # Light of Ko
 
-A narrative 2D platformer made with Godot, for the GGJ 2026.
+A narrative 2D platformer made with Godot, for the GGJ 2026.  
 *Set theme: MASK*
 
 ## 📖 Synopsis
 
-Ko, a small Kodama, must venture into the dark depths of the Light Tree to recover scattered light pearls and save the Grand Kodama, his mentor.
-
-Armed with the, Ko will face his fears and discover the qualities that lie dormant within him... before it's too late.
+Ko, a small Kodama, must venture into the dark depths of the Tree of Light to recover scattered light pearls and save his mentor, the Grand Kodama.  
+Armed with the Mask of Courage, Ko will face his fears and discover the qualities dormant within him...
 
 ## 🎮 Gameplay
 
-- **Mask of Courage**: The Mask is required to enable movement. Wearing it, part of the screen is hidden by darkness
+- **Mask of Courage**: The Mask must be equipped to enable player movement. Note that wearing the item applies a 'Darkness' overlay, partially obscuring the screen
 - **Light Pearls**: Hidden collectibles essential to unlock the true ending
 
 ## 🛠️ Technologies
