@@ -3,9 +3,13 @@ class_name Player extends CharacterBody2D
 signal position_changed(position: Vector2)
 signal facing_changed(facing: Utilities.Facing)
 signal state_changed(state: Utilities.State)
+signal goal()
+signal died()
 
-@onready var state_machine = $PlayerStateMachine
+@onready var game_manager = $"../../../../GameManager"
+@onready var iris = $"../../../Iris"
 @onready var shadow = $"../../DarkWorld/Shadow"
+@onready var state_machine = $PlayerStateMachine
 
 @export var SCORE = 0
 @export var MOVE_ENABLED = false
@@ -16,8 +20,11 @@ signal state_changed(state: Utilities.State)
 
 func _ready() -> void:
 	position_changed.connect(shadow._on_player_position_changed)
+	position_changed.connect(iris._on_player_position_changed)
 	facing_changed.connect(shadow._on_player_facing_changed)
 	state_changed.connect(shadow._on_player_state_changed)
+	goal.connect(game_manager._on_player_goal)
+	died.connect(game_manager._on_player_died)
 
 func _process(delta: float) -> void:
 	position_changed.emit(global_position)
@@ -31,8 +38,13 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("move_left", "move_right")
 	if not is_on_floor():
-		velocity += Vector2(0, GRAVITY) * delta
-		velocity.y = min(velocity.y, TERMINAL_VELOCITY)
+		if motion_mode == 0:
+			velocity += Vector2(0, GRAVITY) * delta
+			velocity.y = min(velocity.y, TERMINAL_VELOCITY)
+		else:
+			velocity = Vector2(0, 0)
+			state_machine.change_state(Utilities.State.FALL)
+			state_changed.emit(Utilities.State.FALL)
 		
 		if velocity.y > 0:
 			state_machine.change_state(Utilities.State.FALL)
@@ -63,16 +75,21 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-func _on_world_gravity_changed(world_gravity: float) -> void:
-	GRAVITY = world_gravity
+func _on_game_manager_gravity_changed(value: float) -> void:
+	GRAVITY = value
 
 
-func _on_world_move_enabled(flag: bool) -> void:
+func _on_game_manager_move_enabled(flag: bool) -> void:
 	MOVE_ENABLED = flag
 
-func _on_world_mask_active(flag: bool) -> void:
+func _on_game_manager_mask_active(flag: bool) -> void:
 	state_machine.current_mask = flag
 	
 func _on_pearl_pearl_collected(amount: int, position: Vector2) -> void:
 	SCORE += amount
-	print("SCORE ", SCORE)
+	
+func _on_goal_hit() -> void:
+	goal.emit()
+	
+func _on_trap_hit() -> void:
+	died.emit()

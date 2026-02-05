@@ -7,9 +7,12 @@ var jump_rr := 1
 @onready var playing_sounds = $PlayingSounds
 
 @export var sfx_scene: PackedScene
+@export var iris_in: AudioStream
+@export var iris_out: AudioStream
 @export var mask_on: AudioStream
 @export var mask_off: AudioStream
 @export var pearl_sfx: AudioStream
+@export var death_sfx: AudioStream
 @export var fear_sfx: AudioStream
 @export var jump1_sfx: AudioStream
 @export var jump2_sfx: AudioStream
@@ -41,6 +44,11 @@ func sound(audio_stream: AudioStream, volume_db: float = 0.0, from: float = 0) -
 	
 	return sfx
 
+func play_iris_in() -> void:
+	sound(iris_in, -8)
+	
+func play_iris_out() -> void:
+	sound(iris_out, -8)
 
 func play_mask_on() -> void:
 	sound(mask_on, -6)
@@ -50,6 +58,9 @@ func play_mask_off() -> void:
 
 func play_pearl() -> void:
 	sound(pearl_sfx, 0)
+
+func play_death() -> void:
+	sound(death_sfx, 0)
 	
 func play_fear() -> void:
 	sound(fear_sfx, 0)

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Light of Ko"
-run/main_scene="uid://8xfhqvm5t0w2"
+run/main_scene="uid://d37rubivun6s3"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="uid://buepvidit6w8k"
 
@@ -25,6 +25,8 @@ AudioManager="*uid://slval1swbd1e"
 window/size/viewport_width=3840
 window/size/viewport_height=2160
 window/size/mode=3
+window/size/window_width_override=1366
+window/size/window_height_override=768
 window/stretch/mode="canvas_items"
 
 [input]

@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://d37rubivun6s3"]
+
+[ext_resource type="Script" uid="uid://bjgbb2u8h2o3w" path="res://src/core/game_manager.gd" id="1_k4jhu"]
+[ext_resource type="Script" uid="uid://ctivt14asm4r6" path="res://src/core/iris.gd" id="2_0rse5"]
+[ext_resource type="Shader" uid="uid://w734r50ywgs" path="res://assets/shaders/iris.gdshader" id="2_frtjd"]
+[ext_resource type="PackedScene" uid="uid://bhmqqhyibsbnt" path="res://scenes/level.tscn" id="4_aonbx"]
+[ext_resource type="PackedScene" uid="uid://b4q2sba2gk6fq" path="res://scenes/player.tscn" id="5_lcbjr"]
+[ext_resource type="PackedScene" uid="uid://k31jg7t1axo4" path="res://scenes/shadow.tscn" id="6_30v7y"]
+[ext_resource type="Shader" uid="uid://gytsbcht3y8w" path="res://assets/shaders/mix_worlds.gdshader" id="7_5xtl8"]
+[ext_resource type="Texture2D" uid="uid://dlwbwv6qdmk1i" path="res://assets/sprites/mask.png" id="8_cjvif"]
+[ext_resource type="PackedScene" uid="uid://bn38e8jhpufhm" path="res://scenes/juice.tscn" id="9_ry0e6"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_pc0jn"]
+viewport_path = NodePath("MixedWorlds")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c7a3q"]
+resource_local_to_scene = true
+shader = ExtResource("2_frtjd")
+shader_parameter/viewport_texture = SubResource("ViewportTexture_pc0jn")
+shader_parameter/softness = 0.1
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_4vth2"]
+viewport_path = NodePath("MixedWorlds/DarkWorld")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_yxe1x"]
+viewport_path = NodePath("MixedWorlds/LightWorld")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jrl6a"]
+resource_local_to_scene = true
+shader = ExtResource("7_5xtl8")
+shader_parameter/light_world_viewport = SubResource("ViewportTexture_yxe1x")
+shader_parameter/dark_world_viewport = SubResource("ViewportTexture_4vth2")
+shader_parameter/mask_texture = ExtResource("8_cjvif")
+shader_parameter/mix_amount = 0.0
+
+[node name="GameManager" type="CanvasLayer" unique_id=1307941216 node_paths=PackedStringArray("mix_worlds_shader")]
+script = ExtResource("1_k4jhu")
+OBSCURITY = true
+MASK_OBTAINED = true
+mix_worlds_shader = NodePath("MixedWorlds/MixWorldsShader")
+
+[node name="BlackRect" type="ColorRect" parent="." unique_id=825045033]
+offset_right = 3840.0
+offset_bottom = 2160.0
+color = Color(0, 0, 0, 1)
+
+[node name="Iris" type="Node2D" parent="." unique_id=861889633]
+position = Vector2(1920, 1080)
+scale = Vector2(100, 100)
+script = ExtResource("2_0rse5")
+
+[node name="IrisShader" type="ColorRect" parent="Iris" unique_id=78017877]
+material = SubResource("ShaderMaterial_c7a3q")
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MixedWorlds" type="SubViewport" parent="." unique_id=1797544279]
+size = Vector2i(3840, 2160)
+
+[node name="LightWorld" type="SubViewport" parent="MixedWorlds" unique_id=1986517730]
+size = Vector2i(3840, 2160)
+
+[node name="Level" parent="MixedWorlds/LightWorld" unique_id=591077788 instance=ExtResource("4_aonbx")]
+
+[node name="Player" parent="MixedWorlds/LightWorld" unique_id=1354902569 instance=ExtResource("5_lcbjr")]
+position = Vector2(722, 658)
+
+[node name="DarkWorld" type="SubViewport" parent="MixedWorlds" unique_id=886796001]
+size = Vector2i(3840, 2160)
+
+[node name="BlackRect" type="ColorRect" parent="MixedWorlds/DarkWorld" unique_id=2010851551]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Shadow" parent="MixedWorlds/DarkWorld" unique_id=1946572110 instance=ExtResource("6_30v7y")]
+
+[node name="MixWorldsShader" type="ColorRect" parent="MixedWorlds" unique_id=1941251468]
+material = SubResource("ShaderMaterial_jrl6a")
+offset_right = 3840.0
+offset_bottom = 2160.0
+
+[node name="Juice" parent="MixedWorlds" unique_id=1633053643 instance=ExtResource("9_ry0e6")]

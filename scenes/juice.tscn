@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bn38e8jhpufhm"]
 
 [ext_resource type="Script" uid="uid://bk7ouxhe08op8" path="res://src/core/juice.gd" id="1_34lfq"]
-[ext_resource type="PackedScene" uid="uid://c2nrpyqkpaonv" path="res://templates/pearl_animation.tscn" id="2_wqn4y"]
+[ext_resource type="PackedScene" uid="uid://c2nrpyqkpaonv" path="res://scenes/pearl_animation.tscn" id="2_wqn4y"]
 
 [node name="Juice" type="Node2D" unique_id=1633053643]
 script = ExtResource("1_34lfq")

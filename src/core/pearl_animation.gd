@@ -1,4 +1,4 @@
-extends Node2D
+class_name PearlAnimation extends Node2D
 
 @onready var sprite = $Sprite2D
 
@@ -12,6 +12,7 @@ func _ready():
 		.set_ease(Tween.EASE_OUT)
 	
 	tween.tween_property(sprite, "modulate:a", 0.0, 0.4)
-	
-	tween.chain().tween_callback(queue_free)
-	
+
+	await tween.finished
+
+	queue_free()

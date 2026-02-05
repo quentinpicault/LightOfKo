@@ -2,8 +2,8 @@ class_name Pearl extends Area2D
 
 signal pearl_collected(amount: int, position: Vector2)
 
-@onready var player = $"../../../LightWorld/Player"
-@onready var juice = $"../../../Juice"
+@onready var player = $"../../../../LightWorld/Player"
+@onready var juice = $"../../../../Juice"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,8 +19,10 @@ func _process(delta: float) -> void:
 func start_bobbing():
 	var duration = randf_range(0.8, 1.3)
 	var start_delay = randf_range(0.0, duration)
-	var tween = create_tween().set_loops()
+
+	var tween = create_tween()
 	
+	tween.set_loops()
 	tween.tween_interval(start_delay)
 	
 	tween.tween_property(self, "position:y", self.position.y - 10, duration)\
