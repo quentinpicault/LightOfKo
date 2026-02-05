@@ -11,7 +11,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func _on_pearl_pearl_collected(amount: int, position: Vector2) -> void:
+func _on_pearl_hit(amount: int, pearl_position: Vector2) -> void:
 	var pearl_anim = pearl_animation_scene.instantiate()
-	pearl_anim.position = position
+	pearl_anim.position = pearl_position
 	add_child(pearl_anim)

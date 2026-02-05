@@ -1,6 +1,6 @@
 class_name Pearl extends Area2D
 
-signal pearl_collected(amount: int, position: Vector2)
+signal hit(amount: int, pearl_position: Vector2)
 
 @onready var player = $"../../../../LightWorld/Player"
 @onready var juice = $"../../../../Juice"
@@ -9,8 +9,8 @@ signal pearl_collected(amount: int, position: Vector2)
 func _ready() -> void:
 	start_bobbing()
 	body_entered.connect(_on_body_entered)
-	pearl_collected.connect(player._on_pearl_pearl_collected)
-	pearl_collected.connect(juice._on_pearl_pearl_collected)
+	hit.connect(player._on_pearl_hit)
+	hit.connect(juice._on_pearl_hit)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -34,6 +34,7 @@ func start_bobbing():
 		.set_ease(Tween.EASE_IN_OUT)
 
 func _on_body_entered(body: Node2D) -> void:
-	AudioManager.play_pearl()
-	pearl_collected.emit(1, global_position)
-	queue_free()
+	if visible:
+		AudioManager.play_pearl()
+		hit.emit(1, global_position)
+		visible = false

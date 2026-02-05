@@ -1,10 +1,10 @@
 class_name Player extends CharacterBody2D
 
-signal position_changed(position: Vector2)
+signal position_changed(player_position: Vector2)
 signal facing_changed(facing: Utilities.Facing)
 signal state_changed(state: Utilities.State)
 signal mask_obtained()
-signal goal()
+signal goal(score: int)
 signal died()
 
 @onready var game_manager = $"../../../../GameManager"
@@ -90,12 +90,13 @@ func _on_game_manager_mask_active(flag: bool) -> void:
 func _on_mask_hit() -> void:
 	mask_obtained.emit()
 	
-func _on_pearl_pearl_collected(amount: int, position: Vector2) -> void:
+func _on_pearl_hit(amount: int, pearl_position: Vector2) -> void:
 	SCORE += amount
-	print("Score: %d" % SCORE)
 	
 func _on_goal_hit() -> void:
-	goal.emit()
+	goal.emit(SCORE)
+	SCORE = 0
 	
 func _on_trap_hit() -> void:
+	SCORE = 0
 	died.emit()

@@ -8,11 +8,13 @@ signal mask_active(flag: bool)
 @onready var level = $"MixedWorlds/LightWorld/Level"
 @onready var checkpoints = $"MixedWorlds/LightWorld/Level/Checkpoints"
 @onready var goals = $"MixedWorlds/LightWorld/Level/Goals"
+@onready var pearls = $"MixedWorlds/LightWorld/Level/Pearls"
 @onready var invisible_wall = $"MixedWorlds/LightWorld/Level/InvisibleWall"
 @onready var mask_wall = $"MixedWorlds/LightWorld/Level/MaskWall"
 @onready var iris = $Iris
 
 @export var LEVEL = 0
+@export var GAME_SCORE = 0
 @export var GRAVITY = 1700.0
 @export var OBSCURITY = false
 @export var MASK_OBTAINED = false
@@ -74,6 +76,9 @@ func toggle_mask():
 	mask_active.emit(MASK_ACTIVE)
 
 func start_game():
+	for pearl in pearls.get_children():
+		pearl.visible = true
+	
 	player.motion_mode = 0
 	var checkpoint = checkpoints.get_child(LEVEL)
 	player.global_position = checkpoint.global_position
@@ -107,7 +112,10 @@ func _on_player_mask_obtained() -> void:
 	MASK_OBTAINED = true
 	mask_wall.queue_free()
 		
-func _on_player_goal() -> void:
+func _on_player_goal(score: int) -> void:
+	GAME_SCORE += score
+	print("Total Score: %d" % GAME_SCORE)
+
 	# Tricky: force FEAR mode during the screen transition is the simplest way to prevent moving
 	if MASK_ACTIVE:
 		toggle_mask()
