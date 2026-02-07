@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bckjbrncq2pls"]
+
+[ext_resource type="Script" uid="uid://bd0dhara0jw66" path="res://src/core/tuto.gd" id="1_isbkw"]
+[ext_resource type="Texture2D" uid="uid://d08wvhivsdgj5" path="res://assets/sprites/tuto2_keyboard.png" id="2_wqfli"]
+[ext_resource type="Texture2D" uid="uid://nayky0qhrayc" path="res://assets/sprites/tuto2_joypad.png" id="3_qefod"]
+
+[node name="TutoMask" type="Node2D" unique_id=2059477591]
+script = ExtResource("1_isbkw")
+
+[node name="Keyboard" type="Sprite2D" parent="." unique_id=272564676]
+texture = ExtResource("2_wqfli")
+centered = false
+
+[node name="Joypad" type="Sprite2D" parent="." unique_id=582150850]
+texture = ExtResource("3_qefod")
+centered = false

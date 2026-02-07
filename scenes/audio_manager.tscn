@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://slval1swbd1e"]
 
 [ext_resource type="Script" uid="uid://b2588cyy5uwee" path="res://src/common/audio_manager.gd" id="1_jisk1"]
-[ext_resource type="PackedScene" uid="uid://joqkcgk7mnr4" path="res://src/common/sfx.tscn" id="2_d0ikh"]
+[ext_resource type="PackedScene" uid="uid://joqkcgk7mnr4" path="res://scenes/sfx.tscn" id="2_d0ikh"]
 [ext_resource type="AudioStream" uid="uid://b0qc2mlrs0rqy" path="res://assets/music/stage_without_mask.mp3" id="2_jp375"]
 [ext_resource type="AudioStream" uid="uid://b0ebbrxfiqpyk" path="res://assets/sfx/pearl.wav" id="3_7jmnn"]
 [ext_resource type="AudioStream" uid="uid://7igbl5wy7g1p" path="res://assets/sfx/iris_in.wav" id="3_dhfah"]
@@ -14,6 +14,11 @@
 [ext_resource type="AudioStream" uid="uid://np41jnvc0h1l" path="res://assets/sfx/jump3.wav" id="5_7jmnn"]
 [ext_resource type="AudioStream" uid="uid://tpsff2kxi6r0" path="res://assets/sfx/death.wav" id="8_rs4ei"]
 [ext_resource type="AudioStream" uid="uid://bx010c7okjy80" path="res://assets/music/stage_with_mask.mp3" id="11_abra4"]
+[ext_resource type="AudioStream" uid="uid://sn3ysknm6bde" path="res://assets/music/title.mp3" id="13_8st14"]
+[ext_resource type="AudioStream" uid="uid://cu853vvxqhtt5" path="res://assets/music/mask_fanfare.mp3" id="16_oucy0"]
+[ext_resource type="AudioStream" uid="uid://cpden31pdr8yv" path="res://assets/music/intro.mp3" id="17_cuol6"]
+[ext_resource type="AudioStream" uid="uid://by4eg6xbyrq47" path="res://assets/music/sad.mp3" id="18_oummu"]
+[ext_resource type="AudioStream" uid="uid://cu1buyp4c23lh" path="res://assets/music/happy.mp3" id="19_hssp1"]
 
 [node name="AudioManager" type="Node" unique_id=2112950315]
 process_mode = 3
@@ -30,12 +35,28 @@ jump1_sfx = ExtResource("3_kdspj")
 jump2_sfx = ExtResource("4_226ow")
 jump3_sfx = ExtResource("5_7jmnn")
 
-[node name="NoMaskMusic" type="AudioStreamPlayer" parent="." unique_id=1028247618]
-stream = ExtResource("2_jp375")
+[node name="PlayingSounds" type="Node" parent="." unique_id=598008608]
+
+[node name="Title" type="AudioStreamPlayer" parent="." unique_id=478714628]
+stream = ExtResource("13_8st14")
 parameters/looping = true
 
-[node name="MaskMusic" type="AudioStreamPlayer" parent="." unique_id=1513482162]
+[node name="StageWithMask" type="AudioStreamPlayer" parent="." unique_id=692009840]
 stream = ExtResource("11_abra4")
 parameters/looping = true
 
-[node name="PlayingSounds" type="Node" parent="." unique_id=598008608]
+[node name="StageWithoutMask" type="AudioStreamPlayer" parent="." unique_id=143143354]
+stream = ExtResource("2_jp375")
+parameters/looping = true
+
+[node name="GetMask" type="AudioStreamPlayer" parent="." unique_id=1568657887]
+stream = ExtResource("16_oucy0")
+
+[node name="Intro" type="AudioStreamPlayer" parent="." unique_id=1146856063]
+stream = ExtResource("17_cuol6")
+
+[node name="Sad" type="AudioStreamPlayer" parent="." unique_id=1610005801]
+stream = ExtResource("18_oummu")
+
+[node name="Happy" type="AudioStreamPlayer" parent="." unique_id=1713816620]
+stream = ExtResource("19_hssp1")

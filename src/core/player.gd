@@ -92,6 +92,9 @@ func _on_mask_hit() -> void:
 	
 func _on_pearl_hit(amount: int, pearl_position: Vector2) -> void:
 	SCORE += amount
+	game_manager.show_pearl_counter()
+	await get_tree().create_timer(3.0).timeout
+	game_manager.hide_pearl_counter()
 	
 func _on_goal_hit() -> void:
 	goal.emit(SCORE)

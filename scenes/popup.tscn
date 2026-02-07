@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://b1ok7qor123x5"]
+
+[ext_resource type="Texture2D" uid="uid://drippa1gt7hk1" path="res://assets/ui/mask_ui.png" id="1_0u5ho"]
+[ext_resource type="Script" uid="uid://bxocd7sw2ogo1" path="res://src/ui/popup.gd" id="1_ofmyw"]
+[ext_resource type="FontFile" uid="uid://bu2226jf2f3wc" path="res://assets/fonts/PlaywriteNZBasic.ttf" id="2_3brdf"]
+[ext_resource type="Texture2D" uid="uid://cslc45548s8xp" path="res://assets/ui/lock.png" id="3_3brdf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4aaqx"]
+content_margin_left = 160.0
+content_margin_top = 144.0
+content_margin_right = 160.0
+content_margin_bottom = 120.0
+bg_color = Color(0, 0, 0, 0.84313726)
+corner_radius_top_left = 92
+corner_radius_top_right = 92
+corner_radius_bottom_right = 92
+corner_radius_bottom_left = 92
+
+[node name="Popup" type="Control" unique_id=337323607]
+process_mode = 3
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ofmyw")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1675114866]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -984.0
+offset_top = -672.0
+offset_right = 984.0
+offset_bottom = 672.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4aaqx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1237930727]
+layout_mode = 2
+theme_override_constants/separation = 112
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer" unique_id=1680277600]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("1_0u5ho")
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer" unique_id=206264925]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_3brdf")
+theme_override_font_sizes/font_size = 48
+text = "You got the Mask of Courage!
+The holes look narrow and difficult to see through, but the mask feels strangely warm... as if a voice is trying to reassure you."
+autowrap_mode = 2
+
+[node name="Ok" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1112527703]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 72
+alignment = 1
+
+[node name="LockLeft" type="TextureRect" parent="PanelContainer/VBoxContainer/Ok" unique_id=1121231833]
+layout_mode = 2
+texture = ExtResource("3_3brdf")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/Ok" unique_id=1756629845]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_3brdf")
+theme_override_font_sizes/font_size = 72
+text = "Ok"
+
+[node name="LockRight" type="TextureRect" parent="PanelContainer/VBoxContainer/Ok" unique_id=889922359]
+layout_mode = 2
+texture = ExtResource("3_3brdf")
+expand_mode = 3
+flip_h = true

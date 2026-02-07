@@ -1,0 +1,314 @@
+[gd_scene format=3 uid="uid://mbxqc6frgagc"]
+
+[ext_resource type="Script" uid="uid://c8jyck2lcpcy5" path="res://src/ui/title_screen.gd" id="1_e54dn"]
+[ext_resource type="Texture2D" uid="uid://bgg823wp2epst" path="res://assets/ui/title_screen_v3.png" id="1_fgkus"]
+[ext_resource type="Texture2D" uid="uid://cxvmq132qg33m" path="res://assets/ui/logo.png" id="2_sa3yf"]
+[ext_resource type="Script" uid="uid://cblg3cmrj82eu" path="res://src/ui/menu_item.gd" id="3_dc4i4"]
+[ext_resource type="Texture2D" uid="uid://cslc45548s8xp" path="res://assets/ui/lock.png" id="3_mgrm8"]
+[ext_resource type="FontFile" uid="uid://bu2226jf2f3wc" path="res://assets/fonts/PlaywriteNZBasic.ttf" id="3_s4lrb"]
+
+[node name="TitleScreen" type="Control" unique_id=1904769219]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e54dn")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1687159961]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_fgkus")
+
+[node name="MainMenu" type="Control" parent="." unique_id=189617321]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2310.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Logo" type="TextureRect" parent="MainMenu" unique_id=110761643]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_top = 175.0
+offset_right = -145.0
+grow_horizontal = 0
+texture = ExtResource("2_sa3yf")
+
+[node name="Control" type="Control" parent="MainMenu" unique_id=1985230154]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Menu" type="VBoxContainer" parent="MainMenu/Control" unique_id=448999831]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 320.0
+offset_right = -93.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 48
+
+[node name="Play" type="HBoxContainer" parent="MainMenu/Control/Menu" unique_id=905205499]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 2
+theme_override_constants/separation = 72
+script = ExtResource("3_dc4i4")
+FOCUS_ON_START = true
+
+[node name="LockLeft" type="TextureRect" parent="MainMenu/Control/Menu/Play" unique_id=515068416]
+layout_mode = 2
+texture = ExtResource("3_mgrm8")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="MainMenu/Control/Menu/Play" unique_id=847987375]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_s4lrb")
+theme_override_font_sizes/font_size = 72
+text = "Play"
+
+[node name="LockRight" type="TextureRect" parent="MainMenu/Control/Menu/Play" unique_id=474604061]
+layout_mode = 2
+texture = ExtResource("3_mgrm8")
+expand_mode = 3
+flip_h = true
+
+[node name="Credits" type="HBoxContainer" parent="MainMenu/Control/Menu" unique_id=1394607950]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 2
+theme_override_constants/separation = 72
+script = ExtResource("3_dc4i4")
+
+[node name="LockLeft" type="TextureRect" parent="MainMenu/Control/Menu/Credits" unique_id=1098286119]
+layout_mode = 2
+texture = ExtResource("3_mgrm8")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="MainMenu/Control/Menu/Credits" unique_id=1590509759]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_s4lrb")
+theme_override_font_sizes/font_size = 72
+text = "Credits"
+
+[node name="LockRight" type="TextureRect" parent="MainMenu/Control/Menu/Credits" unique_id=1534281022]
+layout_mode = 2
+texture = ExtResource("3_mgrm8")
+expand_mode = 3
+flip_h = true
+
+[node name="Quit" type="HBoxContainer" parent="MainMenu/Control/Menu" unique_id=1307960406]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 2
+theme_override_constants/separation = 72
+script = ExtResource("3_dc4i4")
+
+[node name="LockLeft" type="TextureRect" parent="MainMenu/Control/Menu/Quit" unique_id=870437082]
+layout_mode = 2
+texture = ExtResource("3_mgrm8")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="MainMenu/Control/Menu/Quit" unique_id=2073054105]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_s4lrb")
+theme_override_font_sizes/font_size = 72
+text = "Quit"
+
+[node name="LockRight" type="TextureRect" parent="MainMenu/Control/Menu/Quit" unique_id=352305284]
+layout_mode = 2
+texture = ExtResource("3_mgrm8")
+expand_mode = 3
+flip_h = true
+
+[node name="CreditsScreen" type="Control" parent="." unique_id=1529967241]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Black" type="ColorRect" parent="CreditsScreen" unique_id=305840672]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.93333334)
+
+[node name="Back" type="HBoxContainer" parent="CreditsScreen" unique_id=2094687455]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.9
+anchor_right = 0.5
+anchor_bottom = 0.9
+offset_left = -240.5
+offset_top = -119.0
+offset_right = 240.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+focus_mode = 2
+theme_override_constants/separation = 72
+alignment = 1
+script = ExtResource("3_dc4i4")
+
+[node name="LockLeft" type="TextureRect" parent="CreditsScreen/Back" unique_id=536241066]
+layout_mode = 2
+texture = ExtResource("3_mgrm8")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="CreditsScreen/Back" unique_id=1356042468]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_s4lrb")
+theme_override_font_sizes/font_size = 72
+text = "Back"
+
+[node name="LockRight" type="TextureRect" parent="CreditsScreen/Back" unique_id=1429961778]
+layout_mode = 2
+texture = ExtResource("3_mgrm8")
+expand_mode = 3
+flip_h = true
+
+[node name="List" type="VBoxContainer" parent="CreditsScreen" unique_id=699922465]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -765.0
+offset_top = -921.0
+offset_right = 765.0
+offset_bottom = 719.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 120
+
+[node name="Game title" type="VBoxContainer" parent="CreditsScreen/List" unique_id=1779461794]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="CreditsScreen/List/Game title" unique_id=1176307496]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.65882355, 0.56078434, 0.80784315, 1)
+theme_override_fonts/font = ExtResource("3_s4lrb")
+theme_override_font_sizes/font_size = 64
+text = "LIGHT OF KO"
+
+[node name="GD" type="VBoxContainer" parent="CreditsScreen/List" unique_id=624065372]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = -5
+
+[node name="Label" type="Label" parent="CreditsScreen/List/GD" unique_id=91293371]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.65882355, 0.56078434, 0.80784315, 1)
+theme_override_fonts/font = ExtResource("3_s4lrb")
+theme_override_font_sizes/font_size = 42
+text = "Writing, Programming & Game Design"
+
+[node name="Label2" type="Label" parent="CreditsScreen/List/GD" unique_id=1691251167]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_s4lrb")
+theme_override_font_sizes/font_size = 60
+text = "Quentin Picault"
+
+[node name="2DArt" type="VBoxContainer" parent="CreditsScreen/List" unique_id=583423416]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = -5
+
+[node name="Label" type="Label" parent="CreditsScreen/List/2DArt" unique_id=454715936]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.65882355, 0.56078434, 0.80784315, 1)
+theme_override_fonts/font = ExtResource("3_s4lrb")
+theme_override_font_sizes/font_size = 42
+text = "2D Art & Animation"
+
+[node name="Label2" type="Label" parent="CreditsScreen/List/2DArt" unique_id=1189854529]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_s4lrb")
+theme_override_font_sizes/font_size = 60
+text = "Thibault Gauthier"
+
+[node name="Label3" type="Label" parent="CreditsScreen/List/2DArt" unique_id=1696689848]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_s4lrb")
+theme_override_font_sizes/font_size = 60
+text = "Marie-Alix Durand"
+
+[node name="Music" type="VBoxContainer" parent="CreditsScreen/List" unique_id=1210386881]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = -5
+
+[node name="Label" type="Label" parent="CreditsScreen/List/Music" unique_id=1807924242]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.65882355, 0.56078434, 0.80784315, 1)
+theme_override_fonts/font = ExtResource("3_s4lrb")
+theme_override_font_sizes/font_size = 42
+text = "Music"
+
+[node name="Label2" type="Label" parent="CreditsScreen/List/Music" unique_id=636586669]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_s4lrb")
+theme_override_font_sizes/font_size = 60
+text = "Quentin Picault"
+
+[node name="AP" type="VBoxContainer" parent="CreditsScreen/List" unique_id=626304711]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = -5
+
+[node name="Label" type="Label" parent="CreditsScreen/List/AP" unique_id=1197521828]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.65882355, 0.56078434, 0.80784315, 1)
+theme_override_fonts/font = ExtResource("3_s4lrb")
+theme_override_font_sizes/font_size = 42
+text = "Additional Programming & Level Design"
+
+[node name="Label2" type="Label" parent="CreditsScreen/List/AP" unique_id=1243784789]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_s4lrb")
+theme_override_font_sizes/font_size = 60
+text = "Romain Unternaehrer"
+
+[node name="Label3" type="Label" parent="CreditsScreen/List/AP" unique_id=223444416]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_s4lrb")
+theme_override_font_sizes/font_size = 60
+text = "Samuel Geneste"

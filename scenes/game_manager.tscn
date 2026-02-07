@@ -9,6 +9,9 @@
 [ext_resource type="Shader" uid="uid://gytsbcht3y8w" path="res://assets/shaders/mix_worlds.gdshader" id="7_5xtl8"]
 [ext_resource type="Texture2D" uid="uid://dlwbwv6qdmk1i" path="res://assets/sprites/mask.png" id="8_cjvif"]
 [ext_resource type="PackedScene" uid="uid://bn38e8jhpufhm" path="res://scenes/juice.tscn" id="9_ry0e6"]
+[ext_resource type="PackedScene" uid="uid://csn8ema5r5n8q" path="res://scenes/pause.tscn" id="10_0rse5"]
+[ext_resource type="PackedScene" uid="uid://b1ok7qor123x5" path="res://scenes/popup.tscn" id="10_frtjd"]
+[ext_resource type="PackedScene" uid="uid://prej6caext0p" path="res://scenes/pearl_counter.tscn" id="12_aonbx"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_pc0jn"]
 viewport_path = NodePath("MixedWorlds")
@@ -36,11 +39,6 @@ shader_parameter/mix_amount = 0.0
 [node name="GameManager" type="CanvasLayer" unique_id=1307941216 node_paths=PackedStringArray("mix_worlds_shader")]
 script = ExtResource("1_k4jhu")
 mix_worlds_shader = NodePath("MixedWorlds/MixWorldsShader")
-
-[node name="BlackRect" type="ColorRect" parent="." unique_id=825045033]
-offset_right = 3840.0
-offset_bottom = 2160.0
-color = Color(0, 0, 0, 1)
 
 [node name="Iris" type="Node2D" parent="." unique_id=861889633]
 position = Vector2(1920, 1080)
@@ -85,3 +83,21 @@ offset_right = 3840.0
 offset_bottom = 2160.0
 
 [node name="Juice" parent="MixedWorlds" unique_id=1633053643 instance=ExtResource("9_ry0e6")]
+
+[node name="Pause" parent="." unique_id=1759152025 instance=ExtResource("10_0rse5")]
+visible = false
+
+[node name="Popup" parent="." unique_id=337323607 instance=ExtResource("10_frtjd")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PearlCounter" parent="." unique_id=749373394 instance=ExtResource("12_aonbx")]
+offset_left = 143.0
+offset_top = 2350.0
+offset_right = 143.0
+offset_bottom = 2350.0

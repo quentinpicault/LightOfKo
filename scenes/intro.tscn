@@ -1,0 +1,171 @@
+[gd_scene format=3 uid="uid://78hhi5vb6y3q"]
+
+[ext_resource type="Script" uid="uid://drk80u1bfor2m" path="res://src/ui/intro.gd" id="1_es01l"]
+[ext_resource type="Texture2D" uid="uid://cepwwfb3sj0bp" path="res://assets/cutscenes/intro/intro0.png" id="1_ioskq"]
+[ext_resource type="FontFile" uid="uid://bu2226jf2f3wc" path="res://assets/fonts/PlaywriteNZBasic.ttf" id="2_4bx60"]
+[ext_resource type="Texture2D" uid="uid://cvtlxo6c5j6hm" path="res://assets/cutscenes/intro/intro1.png" id="2_wfs7u"]
+[ext_resource type="Texture2D" uid="uid://cor8n7oy3078r" path="res://assets/cutscenes/intro/intro2.png" id="3_es01l"]
+[ext_resource type="Texture2D" uid="uid://dycasvvrbyhow" path="res://assets/cutscenes/intro/intro3.png" id="4_0naf5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2l1n"]
+content_margin_left = 160.0
+content_margin_top = 120.0
+content_margin_right = 160.0
+content_margin_bottom = 120.0
+bg_color = Color(0, 0, 0, 0.84313726)
+corner_radius_top_left = 92
+corner_radius_top_right = 92
+corner_radius_bottom_right = 92
+corner_radius_bottom_left = 92
+
+[node name="Intro" type="Control" unique_id=1346868074]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_es01l")
+
+[node name="Img0" type="TextureRect" parent="." unique_id=1514823872]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_ioskq")
+
+[node name="Img1" type="TextureRect" parent="." unique_id=820363373]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_wfs7u")
+
+[node name="Img2" type="TextureRect" parent="." unique_id=185321742]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_es01l")
+
+[node name="Img3" type="TextureRect" parent="." unique_id=650923314]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_0naf5")
+
+[node name="Text0" type="PanelContainer" parent="." unique_id=1581860381]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -984.0
+offset_top = -689.0
+offset_right = 984.0
+offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i2l1n")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Text0" unique_id=1685833650]
+layout_mode = 2
+theme_override_constants/separation = 112
+
+[node name="Label" type="Label" parent="Text0/VBoxContainer" unique_id=854626324]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_4bx60")
+theme_override_font_sizes/font_size = 48
+text = "Within the Tree of Light dwell small, gentle, and mysterious beings — the Kodamas.
+Guided by their mentor, the Great Kodama, they stand as the eternal guardians of the forest."
+autowrap_mode = 2
+
+[node name="Text1" type="PanelContainer" parent="." unique_id=1336885906]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -984.0
+offset_top = -560.0
+offset_right = 984.0
+offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i2l1n")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Text1" unique_id=155465198]
+layout_mode = 2
+theme_override_constants/separation = 112
+
+[node name="Label" type="Label" parent="Text1/VBoxContainer" unique_id=1039707183]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_4bx60")
+theme_override_font_sizes/font_size = 48
+text = "Then, on a tragic day, the earth quaked. The Great Kodama’s radiance dimmed, and a big rift tore through the tree."
+autowrap_mode = 2
+
+[node name="Text2" type="PanelContainer" parent="." unique_id=1852343448]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -984.0
+offset_top = -540.0
+offset_right = 984.0
+offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i2l1n")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Text2" unique_id=1375216740]
+layout_mode = 2
+theme_override_constants/separation = 112
+
+[node name="Label" type="Label" parent="Text2/VBoxContainer" unique_id=1880887691]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_4bx60")
+theme_override_font_sizes/font_size = 48
+text = "Terror took hold of the Tree of Light. The Kodamas could only watch as the Pearls of Light slipped away into the darkness of the rift."
+autowrap_mode = 2
+
+[node name="Text3" type="PanelContainer" parent="." unique_id=1560066313]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -984.0
+offset_top = -569.0
+offset_right = 984.0
+offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i2l1n")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Text3" unique_id=1618600543]
+layout_mode = 2
+theme_override_constants/separation = 112
+
+[node name="Label" type="Label" parent="Text3/VBoxContainer" unique_id=645798172]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_4bx60")
+theme_override_font_sizes/font_size = 48
+text = "The youngest of these guardians, Ko, was bound to his mentor by unwavering affection.
+He knew he had to leap — and face his fear of the dark — to save the forest."
+autowrap_mode = 2

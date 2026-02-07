@@ -2,8 +2,14 @@ extends Node
 
 var jump_rr := 1
 
-@onready var no_mask_music: AudioStreamPlayer = $NoMaskMusic
-@onready var mask_music: AudioStreamPlayer = $MaskMusic
+@onready var title: AudioStreamPlayer = $Title
+@onready var intro: AudioStreamPlayer = $Intro
+@onready var stage_with_mask: AudioStreamPlayer = $StageWithMask
+@onready var stage_without_mask: AudioStreamPlayer = $StageWithoutMask
+@onready var get_mask: AudioStreamPlayer = $GetMask
+@onready var sad: AudioStreamPlayer = $Sad
+@onready var happy: AudioStreamPlayer = $Happy
+
 @onready var playing_sounds = $PlayingSounds
 
 @export var sfx_scene: PackedScene
@@ -19,20 +25,91 @@ var jump_rr := 1
 @export var jump3_sfx: AudioStream
 
 func _ready() -> void:
-	no_mask_music.volume_db = -80.0
-	mask_music.volume_db = -80.0
+	title.volume_db = -80.0
+	intro.volume_db = -80.0
+	stage_without_mask.volume_db = -80.0
+	stage_with_mask.volume_db = -80.0
+	get_mask.volume_db = -80.0
+	sad.volume_db = -80.0
+	happy.volume_db = -80.0
 	
 func play() -> void:
-	no_mask_music.play()
-	mask_music.play()
-	
-func switch_track(mask: bool):
-	if mask:
-		no_mask_music.volume_db = -80.0
-		mask_music.volume_db = -8.0
-	else:
-		no_mask_music.volume_db = -8.0
-		mask_music.volume_db = -80.0
+	title.play()
+	intro.play()
+	stage_without_mask.play()
+	stage_with_mask.play()
+	get_mask.play()
+	sad.play()
+	happy.play()
+
+func stop() -> void:
+	title.stop()
+	intro.stop()
+	stage_without_mask.stop()
+	stage_with_mask.stop()
+	get_mask.stop()
+	sad.stop()
+	happy.stop()
+
+func switch_track(track: Utilities.Track):
+	match track:
+		Utilities.Track.TITLE:
+			title.volume_db = -8.0
+			intro.volume_db = -80.0
+			stage_without_mask.volume_db = -80.0
+			stage_with_mask.volume_db = -80.0
+			get_mask.volume_db = -80.0
+			sad.volume_db = -80.0
+			happy.volume_db = -80.0
+		Utilities.Track.INTRO:
+			title.volume_db = -80.0
+			intro.volume_db = -8.0
+			stage_without_mask.volume_db = -80.0
+			stage_with_mask.volume_db = -80.0
+			get_mask.volume_db = -80.0
+			sad.volume_db = -80.0
+			happy.volume_db = -80.0
+		Utilities.Track.STAGE_WITH_MASK:
+			title.volume_db = -80.0
+			intro.volume_db = -80.0
+			stage_without_mask.volume_db = -80.0
+			stage_with_mask.volume_db = -8.0
+			get_mask.volume_db = -80.0
+			sad.volume_db = -80.0
+			happy.volume_db = -80.0
+		Utilities.Track.STAGE_WITHOUT_MASK:
+			title.volume_db = -80.0
+			intro.volume_db = -80.0
+			stage_without_mask.volume_db = -8.0
+			stage_with_mask.volume_db = -80.0
+			get_mask.volume_db = -80.0
+			sad.volume_db = -80.0
+			happy.volume_db = -80.0
+		Utilities.Track.GET_MASK:
+			title.volume_db = -80.0
+			intro.volume_db = -80.0
+			stage_without_mask.volume_db = -80.0
+			stage_with_mask.volume_db = -80.0
+			get_mask.volume_db = -8.0
+			sad.volume_db = -80.0
+			happy.volume_db = -80.0
+		Utilities.Track.SAD:
+			title.volume_db = -80.0
+			intro.volume_db = -80.0
+			stage_without_mask.volume_db = -80.0
+			stage_with_mask.volume_db = -80.0
+			get_mask.volume_db = -80.0
+			sad.volume_db = -8.0
+			happy.volume_db = -80.0
+		Utilities.Track.HAPPY:
+			title.volume_db = -80.0
+			intro.volume_db = -80.0
+			stage_without_mask.volume_db = -80.0
+			stage_with_mask.volume_db = -80.0
+			get_mask.volume_db = -80.0
+			sad.volume_db = -80.0
+			happy.volume_db = -8.0
+		
 
 func sound(audio_stream: AudioStream, volume_db: float = 0.0, from: float = 0) -> SFX:
 	var sfx: SFX = sfx_scene.instantiate()
@@ -45,10 +122,10 @@ func sound(audio_stream: AudioStream, volume_db: float = 0.0, from: float = 0) -
 	return sfx
 
 func play_iris_in() -> void:
-	sound(iris_in, -8)
+	sound(iris_in, -13)
 	
 func play_iris_out() -> void:
-	sound(iris_out, -8)
+	sound(iris_out, -13)
 
 func play_mask_on() -> void:
 	sound(mask_on, -6)

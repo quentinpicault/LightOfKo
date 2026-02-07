@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dd3q4qrtchrxv"]
+
+[ext_resource type="Script" uid="uid://bd0dhara0jw66" path="res://src/core/tuto.gd" id="1_ims83"]
+[ext_resource type="Texture2D" uid="uid://dulw0g5urqrm8" path="res://assets/sprites/tuto0_keyboard.png" id="2_h3uiw"]
+[ext_resource type="Texture2D" uid="uid://0la5m5pal5i8" path="res://assets/sprites/tuto0_joypad.png" id="3_bwcxl"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ims83"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h3uiw"]
+light_mode = 1
+
+[node name="TutoMove" type="Node2D" unique_id=827063902]
+script = ExtResource("1_ims83")
+
+[node name="Keyboard" type="Sprite2D" parent="." unique_id=838835637]
+visible = false
+material = SubResource("CanvasItemMaterial_ims83")
+texture = ExtResource("2_h3uiw")
+centered = false
+
+[node name="Joypad" type="Sprite2D" parent="." unique_id=414064448]
+visible = false
+material = SubResource("CanvasItemMaterial_h3uiw")
+texture = ExtResource("3_bwcxl")
+centered = false

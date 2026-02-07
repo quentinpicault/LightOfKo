@@ -3,6 +3,7 @@ class_name GameManager extends CanvasLayer
 signal gravity_changed(gravity: float)
 signal move_enabled(flag: bool)
 signal mask_active(flag: bool)
+signal paused()
 
 @onready var player = $"MixedWorlds/LightWorld/Player"
 @onready var level = $"MixedWorlds/LightWorld/Level"
@@ -12,6 +13,10 @@ signal mask_active(flag: bool)
 @onready var invisible_wall = $"MixedWorlds/LightWorld/Level/InvisibleWall"
 @onready var mask_wall = $"MixedWorlds/LightWorld/Level/MaskWall"
 @onready var iris = $Iris
+@onready var pause = $Pause
+@onready var popup = $Popup
+@onready var pearl_counter = $PearlCounter
+@onready var pearl_counter_count = $PearlCounter/Count
 
 @export var LEVEL = 0
 @export var GAME_SCORE = 0
@@ -23,6 +28,7 @@ signal mask_active(flag: bool)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	get_tree().paused = false
 	if LEVEL > 0:
 		player.position.x -= LEVEL * 3850
 		level.position.x -= LEVEL * 3850
@@ -39,12 +45,17 @@ func _ready() -> void:
 	
 	AudioManager.play()
 	if MASK_ACTIVE:
-		AudioManager.switch_track(true)
+		AudioManager.switch_track(Utilities.Track.STAGE_WITH_MASK)
 	else:
-		AudioManager.switch_track(false)
+		AudioManager.switch_track(Utilities.Track.STAGE_WITHOUT_MASK)
+	
 	gravity_changed.connect(player._on_game_manager_gravity_changed)
 	move_enabled.connect(player._on_game_manager_move_enabled)
 	mask_active.connect(player._on_game_manager_mask_active)
+	paused.connect(pause._on_game_manager_paused)
+	pause.resume_game.connect(_on_pause_resume_game)
+	popup.action.connect(_on_popup_action)
+
 	gravity_changed.emit(GRAVITY)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -55,10 +66,10 @@ func _process(delta: float) -> void:
 			toggle_mask()
 			if MASK_ACTIVE:
 				AudioManager.play_mask_on()
-				AudioManager.switch_track(true)
+				AudioManager.switch_track(Utilities.Track.STAGE_WITH_MASK)
 			else:
 				AudioManager.play_mask_off()
-				AudioManager.switch_track(false)
+				AudioManager.switch_track(Utilities.Track.STAGE_WITHOUT_MASK)
 		
 		if !OBSCURITY:
 			should_move = true
@@ -66,6 +77,13 @@ func _process(delta: float) -> void:
 			should_move = true
 			
 	move_enabled.emit(should_move)
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		get_tree().paused = true
+		pause.show()
+		paused.emit()
+		show_pearl_counter()
 
 func toggle_mask():
 	MASK_ACTIVE = !MASK_ACTIVE
@@ -108,13 +126,57 @@ func check_level_conditions() -> void:
 	OBSCURITY = LEVEL > 1
 	MASK_OBTAINED = LEVEL > 1
 
+	if LEVEL == 2:
+		AudioManager.play_fear()
+
+func show_pearl_counter() -> void:
+	pearl_counter_count.text = str(GAME_SCORE + player.SCORE)
+	var tween = create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	tween.tween_property(pearl_counter, "position:y", 1935, 0.2)\
+	.set_trans(Tween.TRANS_SINE)\
+	.set_ease(Tween.EASE_IN_OUT)
+
+func hide_pearl_counter() -> void:
+	var tween = create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	tween.tween_property(pearl_counter, "position:y", 2350, 0.2)\
+	.set_trans(Tween.TRANS_SINE)\
+	.set_ease(Tween.EASE_IN_OUT)
+
 func _on_player_mask_obtained() -> void:
+	AudioManager.play()
+	AudioManager.switch_track(Utilities.Track.GET_MASK)
+
+	get_tree().paused = true
+	popup.open()
+
+	var tween = create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	tween.set_parallel(true)
+	tween.tween_property(popup, "modulate:a", 1.0, 0.4)\
+		.set_trans(Tween.TRANS_SINE)\
+		.set_ease(Tween.EASE_IN_OUT)
+
+func _on_popup_action() -> void:
+	var tween = create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	tween.set_parallel(true)
+	tween.tween_property(popup, "modulate:a", 0.0, 0.4)\
+		.set_trans(Tween.TRANS_SINE)\
+		.set_ease(Tween.EASE_IN_OUT)
+
+	await tween.finished
+
+	get_tree().paused = false
+	AudioManager.switch_track(Utilities.Track.STAGE_WITHOUT_MASK)
 	MASK_OBTAINED = true
 	mask_wall.queue_free()
 		
 func _on_player_goal(score: int) -> void:
 	GAME_SCORE += score
-	print("Total Score: %d" % GAME_SCORE)
+
+	if LEVEL == 6:
+		if GAME_SCORE == 28:
+			Secret.unlocked = true
+			
+		get_tree().change_scene_to_file("res://scenes/sad_end.tscn")
 
 	# Tricky: force FEAR mode during the screen transition is the simplest way to prevent moving
 	if MASK_ACTIVE:
@@ -157,3 +219,9 @@ func _on_player_died() -> void:
 		.set_ease(Tween.EASE_IN_OUT)
 	await tween1.finished
 	start_game()
+
+func _on_pause_resume_game() -> void:
+	pause.hide()
+	await get_tree().create_timer(0.05).timeout
+	get_tree().paused = false
+	hide_pearl_counter()

@@ -1,0 +1,194 @@
+[gd_scene format=3 uid="uid://c6i4mc61l66b1"]
+
+[ext_resource type="Script" uid="uid://y70v2k84a15n" path="res://src/ui/happy_end.gd" id="1_pgv78"]
+[ext_resource type="Texture2D" uid="uid://bvvejbwfctqhs" path="res://assets/cutscenes/end1/end1_0.png" id="2_vqj3i"]
+[ext_resource type="Texture2D" uid="uid://cglwr33s4cqm1" path="res://assets/cutscenes/end1/end1_1.png" id="3_jff3u"]
+[ext_resource type="Texture2D" uid="uid://di76wi6fek7h0" path="res://assets/cutscenes/end1/end1_1_small.png" id="4_icngo"]
+[ext_resource type="Texture2D" uid="uid://dily67up76lpo" path="res://assets/cutscenes/end1/end1_1_medium.png" id="5_1cf1x"]
+[ext_resource type="FontFile" uid="uid://bu2226jf2f3wc" path="res://assets/fonts/PlaywriteNZBasic.ttf" id="6_1cf1x"]
+[ext_resource type="Texture2D" uid="uid://dmloxu2mgoude" path="res://assets/cutscenes/end1/end1_1_tall.png" id="6_kjj35"]
+[ext_resource type="Texture2D" uid="uid://io8ytl1ex05h" path="res://assets/cutscenes/end1/end1_2.png" id="7_j01yw"]
+[ext_resource type="Texture2D" uid="uid://coi7k0r235u6g" path="res://assets/ui/pearl_ui.png" id="9_jff3u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2l1n"]
+content_margin_left = 160.0
+content_margin_top = 120.0
+content_margin_right = 160.0
+content_margin_bottom = 120.0
+bg_color = Color(0, 0, 0, 0.84313726)
+corner_radius_top_left = 92
+corner_radius_top_right = 92
+corner_radius_bottom_right = 92
+corner_radius_bottom_left = 92
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icngo"]
+bg_color = Color(0, 0, 0, 0.8745098)
+corner_radius_top_left = 160
+corner_radius_top_right = 160
+corner_radius_bottom_right = 160
+corner_radius_bottom_left = 160
+
+[node name="HappyEnd" type="Control" unique_id=1346868074]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pgv78")
+
+[node name="Img0" type="TextureRect" parent="." unique_id=1514823872]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_vqj3i")
+
+[node name="Img1" type="TextureRect" parent="." unique_id=2982368]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_jff3u")
+
+[node name="Img2" type="TextureRect" parent="." unique_id=1851232012]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_icngo")
+
+[node name="Img3" type="TextureRect" parent="." unique_id=1380796321]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_1cf1x")
+
+[node name="Img4" type="TextureRect" parent="." unique_id=534243706]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_kjj35")
+
+[node name="Img5" type="TextureRect" parent="." unique_id=821934363]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_j01yw")
+
+[node name="Text0" type="PanelContainer" parent="." unique_id=1581860381]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -984.0
+offset_top = -689.0
+offset_right = 984.0
+offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i2l1n")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Text0" unique_id=1685833650]
+layout_mode = 2
+theme_override_constants/separation = 112
+
+[node name="Label" type="Label" parent="Text0/VBoxContainer" unique_id=854626324]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_1cf1x")
+theme_override_font_sizes/font_size = 48
+text = "Then the Mask of Courage suddenly stirred to life,
+and these words echoed:
+‘Ko has proven his true worth in the darkness — he is worthy to watch over the forest.’"
+autowrap_mode = 2
+
+[node name="Text1" type="PanelContainer" parent="." unique_id=895289497]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -984.0
+offset_top = -560.0
+offset_right = 984.0
+offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i2l1n")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Text1" unique_id=1662714078]
+layout_mode = 2
+theme_override_constants/separation = 112
+
+[node name="Label" type="Label" parent="Text1/VBoxContainer" unique_id=2056523497]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_1cf1x")
+theme_override_font_sizes/font_size = 48
+text = "The Great Kodama, who now dwells among the forest’s towering crowns, would surely be proud of Ko."
+autowrap_mode = 2
+
+[node name="Pearls" type="Panel" parent="." unique_id=824086631]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -836.0
+offset_top = -268.0
+offset_right = 836.0
+offset_bottom = 268.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_icngo")
+
+[node name="Pearl" type="TextureRect" parent="Pearls" unique_id=770884486]
+custom_minimum_size = Vector2(1.165, 0)
+layout_mode = 0
+offset_left = 94.0
+offset_top = 42.0
+offset_right = 204.0
+offset_bottom = 152.0
+scale = Vector2(3.8903902, 3.8903902)
+texture = ExtResource("9_jff3u")
+expand_mode = 1
+
+[node name="Count" type="Label" parent="Pearls" unique_id=876084130]
+custom_minimum_size = Vector2(1.165, 0)
+layout_mode = 0
+offset_left = 596.0
+offset_top = 57.0
+offset_right = 914.0
+offset_bottom = 453.0
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 50
+theme_override_fonts/font = ExtResource("6_1cf1x")
+theme_override_font_sizes/font_size = 240
+text = "28"
+
+[node name="Count2" type="Label" parent="Pearls" unique_id=1599414067]
+custom_minimum_size = Vector2(1.165, 0)
+layout_mode = 0
+offset_left = 989.0
+offset_top = 57.0
+offset_right = 1457.0
+offset_bottom = 453.0
+theme_override_colors/font_color = Color(0.65882355, 0.56078434, 0.80784315, 1)
+theme_override_colors/font_outline_color = Color(0.65882355, 0.56078434, 0.80784315, 1)
+theme_override_constants/outline_size = 50
+theme_override_fonts/font = ExtResource("6_1cf1x")
+theme_override_font_sizes/font_size = 240
+text = "/ 28"

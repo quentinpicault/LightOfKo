@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://prej6caext0p"]
+
+[ext_resource type="Texture2D" uid="uid://d23swt5xhju3q" path="res://assets/ui/pearl_overlay.png" id="1_jhlnq"]
+[ext_resource type="Texture2D" uid="uid://coi7k0r235u6g" path="res://assets/ui/pearl_ui.png" id="2_q7klk"]
+[ext_resource type="FontFile" uid="uid://bu2226jf2f3wc" path="res://assets/fonts/PlaywriteNZBasic.ttf" id="3_xt84g"]
+
+[node name="PearlCounter" type="Control" unique_id=749373394]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Overlay" type="TextureRect" parent="." unique_id=1759259728]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_jhlnq")
+
+[node name="Pearl" type="TextureRect" parent="." unique_id=1779425763]
+layout_mode = 0
+offset_left = 15.0
+offset_top = -37.0
+offset_right = 125.0
+offset_bottom = 73.0
+texture = ExtResource("2_q7klk")
+expand_mode = 1
+
+[node name="Count" type="Label" parent="." unique_id=137372421]
+layout_mode = 0
+offset_left = 144.0
+offset_top = -35.0
+offset_right = 237.0
+offset_bottom = 82.0
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("3_xt84g")
+theme_override_font_sizes/font_size = 62
+text = "0"
