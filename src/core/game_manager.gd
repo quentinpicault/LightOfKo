@@ -26,6 +26,8 @@ signal paused()
 @export var MASK_ACTIVE = false
 @export var mix_worlds_shader: ColorRect
 
+var pearl_tween: Tween
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	get_tree().paused = false
@@ -130,15 +132,34 @@ func check_level_conditions() -> void:
 		AudioManager.play_fear()
 
 func show_pearl_counter() -> void:
+	if pearl_tween and pearl_tween.is_running():
+		pearl_tween.kill()
 	pearl_counter_count.text = str(GAME_SCORE + player.SCORE)
-	var tween = create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-	tween.tween_property(pearl_counter, "position:y", 1935, 0.2)\
+	pearl_tween = create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	pearl_tween.tween_property(pearl_counter, "position:y", 1935, 0.2)\
+	.set_trans(Tween.TRANS_SINE)\
+	.set_ease(Tween.EASE_IN_OUT)
+
+func show_pearl_counter_3s() -> void:
+	if pearl_tween and pearl_tween.is_running():
+		pearl_tween.kill()
+	pearl_counter_count.text = str(GAME_SCORE + player.SCORE)
+	pearl_tween = create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	pearl_tween.tween_property(pearl_counter, "position:y", 1935, 0.2)\
+	.set_trans(Tween.TRANS_SINE)\
+	.set_ease(Tween.EASE_IN_OUT)
+
+	pearl_tween.tween_interval(3.0)
+
+	pearl_tween.tween_property(pearl_counter, "position:y", 2350, 0.2)\
 	.set_trans(Tween.TRANS_SINE)\
 	.set_ease(Tween.EASE_IN_OUT)
 
 func hide_pearl_counter() -> void:
-	var tween = create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-	tween.tween_property(pearl_counter, "position:y", 2350, 0.2)\
+	if pearl_tween and pearl_tween.is_running():
+		pearl_tween.kill()
+	pearl_tween = create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	pearl_tween.tween_property(pearl_counter, "position:y", 2350, 0.2)\
 	.set_trans(Tween.TRANS_SINE)\
 	.set_ease(Tween.EASE_IN_OUT)
 
