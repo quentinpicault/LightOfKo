@@ -73,8 +73,7 @@ custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_yhpej")
 theme_override_font_sizes/font_size = 48
-text = "Ko finally emerged from the rift.
-He returned with the Pearls."
+text = "Ko sortit enfin de la faille, les Perles avec lui."
 autowrap_mode = 2
 
 [node name="Text1" type="PanelContainer" parent="." unique_id=780915379]
@@ -102,7 +101,7 @@ custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_yhpej")
 theme_override_font_sizes/font_size = 48
-text = "But the light came too late..."
+text = "Mais la Lumière vint trop tard…"
 autowrap_mode = 2
 
 [node name="Text2" type="PanelContainer" parent="." unique_id=684246264]
@@ -130,5 +129,5 @@ custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_yhpej")
 theme_override_font_sizes/font_size = 48
-text = "With a final, shimmering breath, the Great Kodama vanished into the wind, leaving only a memory behind."
+text = "D’un dernier souffle scintillant, le Grand Kodama s’envola avec le vent, ne laissant derrière lui qu’un doux souvenir."
 autowrap_mode = 2

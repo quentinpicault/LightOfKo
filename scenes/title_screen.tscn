@@ -81,7 +81,7 @@ expand_mode = 3
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_s4lrb")
 theme_override_font_sizes/font_size = 72
-text = "Play"
+text = "Jouer"
 
 [node name="LockRight" type="TextureRect" parent="MainMenu/Control/Menu/Play" unique_id=474604061]
 layout_mode = 2
@@ -106,7 +106,7 @@ expand_mode = 3
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_s4lrb")
 theme_override_font_sizes/font_size = 72
-text = "Credits"
+text = "Crédits"
 
 [node name="LockRight" type="TextureRect" parent="MainMenu/Control/Menu/Credits" unique_id=1534281022]
 layout_mode = 2
@@ -131,7 +131,7 @@ expand_mode = 3
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_s4lrb")
 theme_override_font_sizes/font_size = 72
-text = "Quit"
+text = "Quitter"
 
 [node name="LockRight" type="TextureRect" parent="MainMenu/Control/Menu/Quit" unique_id=352305284]
 layout_mode = 2
@@ -184,7 +184,7 @@ expand_mode = 3
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_s4lrb")
 theme_override_font_sizes/font_size = 72
-text = "Back"
+text = "Retour"
 
 [node name="LockRight" type="TextureRect" parent="CreditsScreen/Back" unique_id=1429961778]
 layout_mode = 2
@@ -230,7 +230,7 @@ size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.65882355, 0.56078434, 0.80784315, 1)
 theme_override_fonts/font = ExtResource("3_s4lrb")
 theme_override_font_sizes/font_size = 42
-text = "Writing, Programming & Game Design"
+text = "Scénario, Programmation & Game Design"
 
 [node name="Label2" type="Label" parent="CreditsScreen/List/GD" unique_id=1691251167]
 layout_mode = 2
@@ -250,7 +250,7 @@ size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.65882355, 0.56078434, 0.80784315, 1)
 theme_override_fonts/font = ExtResource("3_s4lrb")
 theme_override_font_sizes/font_size = 42
-text = "2D Art & Animation"
+text = "2D & Animation"
 
 [node name="Label2" type="Label" parent="CreditsScreen/List/2DArt" unique_id=1189854529]
 layout_mode = 2
@@ -277,7 +277,7 @@ size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.65882355, 0.56078434, 0.80784315, 1)
 theme_override_fonts/font = ExtResource("3_s4lrb")
 theme_override_font_sizes/font_size = 42
-text = "Music"
+text = "Musique"
 
 [node name="Label2" type="Label" parent="CreditsScreen/List/Music" unique_id=636586669]
 layout_mode = 2
@@ -297,7 +297,7 @@ size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.65882355, 0.56078434, 0.80784315, 1)
 theme_override_fonts/font = ExtResource("3_s4lrb")
 theme_override_font_sizes/font_size = 42
-text = "Additional Programming & Level Design"
+text = "Level Design"
 
 [node name="Label2" type="Label" parent="CreditsScreen/List/AP" unique_id=1243784789]
 layout_mode = 2

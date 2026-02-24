@@ -90,7 +90,7 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -984.0
-offset_top = -689.0
+offset_top = -606.0
 offset_right = 984.0
 offset_bottom = -120.0
 grow_horizontal = 2
@@ -106,9 +106,8 @@ custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_1cf1x")
 theme_override_font_sizes/font_size = 48
-text = "Then the Mask of Courage suddenly stirred to life,
-and these words echoed:
-‘Ko has proven his true worth in the darkness — he is worthy to watch over the forest.’"
+text = "Soudain, le Masque du Courage s’anima et prononça ces mots :
+« Ko a montré sa vraie valeur dans l’obscurité — il est digne de veiller sur la forêt. »"
 autowrap_mode = 2
 
 [node name="Text1" type="PanelContainer" parent="." unique_id=895289497]
@@ -136,7 +135,7 @@ custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_1cf1x")
 theme_override_font_sizes/font_size = 48
-text = "The Great Kodama, who now dwells among the forest’s towering crowns, would surely be proud of Ko."
+text = "Le Grand Kodama, qui habite maintenant dans les plus hautes cimes de la forêt, serait sûrement fier de Ko."
 autowrap_mode = 2
 
 [node name="Pearls" type="Panel" parent="." unique_id=824086631]

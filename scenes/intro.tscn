@@ -65,7 +65,7 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -984.0
-offset_top = -689.0
+offset_top = -560.0
 offset_right = 984.0
 offset_bottom = -120.0
 grow_horizontal = 2
@@ -81,8 +81,8 @@ custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_4bx60")
 theme_override_font_sizes/font_size = 48
-text = "Within the Tree of Light dwell small, gentle, and mysterious beings — the Kodamas.
-Guided by their mentor, the Great Kodama, they stand as the eternal guardians of the forest."
+text = "Dans l’Arbre de Lumière vivaient les Kodamas.
+Guidés par le Grand Kodama, ils protégeaient la forêt depuis toujours."
 autowrap_mode = 2
 
 [node name="Text1" type="PanelContainer" parent="." unique_id=1336885906]
@@ -94,7 +94,7 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -984.0
-offset_top = -560.0
+offset_top = -606.0
 offset_right = 984.0
 offset_bottom = -120.0
 grow_horizontal = 2
@@ -110,7 +110,8 @@ custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_4bx60")
 theme_override_font_sizes/font_size = 48
-text = "Then, on a tragic day, the earth quaked. The Great Kodama’s radiance dimmed, and a big rift tore through the tree."
+text = "Un jour, la terre gronda...
+La lumière du Grand Kodama vacilla… et une profonde faille s’ouvrit dans l’Arbre."
 autowrap_mode = 2
 
 [node name="Text2" type="PanelContainer" parent="." unique_id=1852343448]
@@ -122,7 +123,7 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -984.0
-offset_top = -540.0
+offset_top = -560.0
 offset_right = 984.0
 offset_bottom = -120.0
 grow_horizontal = 2
@@ -138,7 +139,7 @@ custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_4bx60")
 theme_override_font_sizes/font_size = 48
-text = "Terror took hold of the Tree of Light. The Kodamas could only watch as the Pearls of Light slipped away into the darkness of the rift."
+text = "La peur gagna les branches — une à une, les Perles de Lumière tombèrent dans le noir."
 autowrap_mode = 2
 
 [node name="Text3" type="PanelContainer" parent="." unique_id=1560066313]
@@ -166,6 +167,6 @@ custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_4bx60")
 theme_override_font_sizes/font_size = 48
-text = "The youngest of these guardians, Ko, was bound to his mentor by unwavering affection.
-He knew he had to leap — and face his fear of the dark — to save the forest."
+text = "Ko, le plus jeune Kodama, aimait son mentor plus que tout.
+Alors il sauta dans le noir — pour sauver la forêt."
 autowrap_mode = 2

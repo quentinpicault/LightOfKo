@@ -53,8 +53,9 @@ custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_3brdf")
 theme_override_font_sizes/font_size = 48
-text = "You got the Mask of Courage!
-The holes look narrow and difficult to see through, but the mask feels strangely warm... as if a voice is trying to reassure you."
+text = "Vous obtenez le Masque du Courage !
+La vision devient étroite, incertaine… mais une voix rassurante émane du Masque.
+Comme une présence chaleureuse qui apaise la peur."
 autowrap_mode = 2
 
 [node name="Ok" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1112527703]
@@ -72,7 +73,7 @@ expand_mode = 3
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_3brdf")
 theme_override_font_sizes/font_size = 72
-text = "Ok"
+text = "D'accord"
 
 [node name="LockRight" type="TextureRect" parent="PanelContainer/VBoxContainer/Ok" unique_id=889922359]
 layout_mode = 2
