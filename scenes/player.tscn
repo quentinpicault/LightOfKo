@@ -7,6 +7,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(74, 74)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qhqgy"]
+light_mode = 1
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_i3pqv"]
 atlas = ExtResource("1_4flbx")
 region = Rect2(546, 0, 91, 141)
@@ -90,6 +93,9 @@ animations = [{
 "name": &"run",
 "speed": 10.0
 }]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dqkch"]
+light_mode = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n7ghd"]
 atlas = ExtResource("1_4flbx")
@@ -185,12 +191,14 @@ JUMP_VELOCITY = -1000.0
 shape = SubResource("RectangleShape2D_onrkg")
 
 [node name="RegularKo" type="AnimatedSprite2D" parent="." unique_id=287908257]
+material = SubResource("CanvasItemMaterial_qhqgy")
 position = Vector2(3.6562476, -29.467377)
 scale = Vector2(0.9375, 0.9375)
 sprite_frames = SubResource("SpriteFrames_nvl01")
 animation = &"fear"
 
 [node name="MaskKo" type="AnimatedSprite2D" parent="." unique_id=1558391329]
+material = SubResource("CanvasItemMaterial_dqkch")
 position = Vector2(3.6562476, -29.467377)
 scale = Vector2(0.9375, 0.9375)
 sprite_frames = SubResource("SpriteFrames_5tmop")

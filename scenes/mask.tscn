@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://cpvnnyhh52b7h" path="res://src/core/mask.gd" id="1_rv8xw"]
 [ext_resource type="Texture2D" uid="uid://pirfgcmfq3xv" path="res://assets/sprites/mask_artefact.png" id="2_rv8xw"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rv8xw"]
+light_mode = 1
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t1rx8"]
 size = Vector2(74, 61)
 
@@ -11,6 +14,7 @@ collision_layer = 4
 script = ExtResource("1_rv8xw")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=995341220]
+material = SubResource("CanvasItemMaterial_rv8xw")
 texture = ExtResource("2_rv8xw")
 centered = false
 

@@ -141,10 +141,10 @@ texture = ExtResource("3_8c41q")
 centered = false
 
 [node name="TutoMove" parent="Cosmetics" unique_id=827063902 instance=ExtResource("3_olg7q")]
-position = Vector2(1496, 752)
+position = Vector2(1955, 998)
 
 [node name="TutoMask" parent="Cosmetics" unique_id=2059477591 instance=ExtResource("4_olg7q")]
-position = Vector2(7880, 267)
+position = Vector2(8291, 396)
 
 [node name="Lights" type="Node2D" parent="." unique_id=1924258854]
 

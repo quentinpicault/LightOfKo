@@ -54,7 +54,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_3brdf")
 theme_override_font_sizes/font_size = 48
 text = "Vous obtenez le Masque du Courage !
-La vision devient étroite, incertaine… mais une voix rassurante émane du Masque.
+En le portant, la vision devient étroite, incertaine… mais une voix rassurante transparaît.
 Comme une présence chaleureuse qui apaise la peur."
 autowrap_mode = 2
 

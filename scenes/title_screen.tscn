@@ -325,4 +325,4 @@ offset_bottom = -59.0
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.61745477, 0.61745477, 0.6174547, 1)
 theme_override_font_sizes/font_size = 30
-text = "v1.0.1-b1212"
+text = "v1.0.2-FR-b2013"
